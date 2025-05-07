@@ -4,10 +4,18 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth.models import User,auth
+from core.models import MeetingMinutes
 
 @login_required
 def homepage(request):
-    return render(request, 'homepage.html')
+
+    all_meeting_minutes= MeetingMinutes.objects.all()
+
+    context={
+        'all_meeting_minutes':all_meeting_minutes,
+    }
+
+    return render(request, 'homepage.html',context=context)
 
 def login_view(request):
     if request.method == 'POST':
