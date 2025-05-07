@@ -5,57 +5,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
+
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: Arial, sans-serif;
         }
 
         body {
-            background-color: #f0f2f5;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            height: 100vh;
+            background-color: #99a3a4 ;
+            margin: 0;
         }
 
-        .container {
-            background-color: white;
+        .sec0 {
+            background: white;
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 90%;
             max-width: 400px;
-            padding: 30px;
-        }
-
-        .logo {
             text-align: center;
-            margin-bottom: 25px;
         }
 
-        .logo h1 {
-            color: #1a73e8;
-            font-size: 28px;
-            font-weight: 600;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .header h2 {
-            color: #202124;
+        .sec0 h1 {
+            margin-bottom: 20px;
+            background-color: #c0392b;
+            color: white;
+            padding: 20px 0;
             font-size: 24px;
-            font-weight: 500;
-            margin-bottom: 10px;
+            letter-spacing: 2px;
+            border-radius: 10px 10px 0 0;
         }
 
-        .header p {
-            color: #5f6368;
-            font-size: 14px;
+        .sec0 p {
+            margin: 20px 0 5px;
+            text-align: left;
         }
 
         .error {
@@ -65,171 +55,54 @@
         }
 
 
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #202124;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #dadce0;
-            border-radius: 4px;
-            font-size: 16px;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: #1a73e8;
-            box-shadow: 0 0 0 2px rgba(26, 115, 232, 0.2);
-        }
-
-        .form-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .remember-me {
-            display: flex;
-            align-items: center;
-        }
-
-        .remember-me input {
-            margin-right: 8px;
-        }
-
-        .remember-me label {
-            color: #5f6368;
-            font-size: 14px;
-        }
-
-        .forgot-password {
-            color: #1a73e8;
-            font-size: 14px;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .forgot-password:hover {
-            text-decoration: underline;
-        }
-
-        .btn {
-            width: 100%;
-            padding: 12px;
-            background-color: #1a73e8;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .btn:hover {
-            background-color: #1557b0;
-        }
-
-        .social-login {
-            margin-top: 25px;
-            text-align: center;
-        }
-
-        .social-login p {
-            color: #5f6368;
-            font-size: 14px;
-            margin-bottom: 15px;
-            position: relative;
-        }
-
-        .social-login p::before,
-        .social-login p::after {
-            content: "";
-            display: block;
-            width: 30%;
-            height: 1px;
-            background-color: #dadce0;
-            position: absolute;
-            top: 50%;
-        }
-
-        .social-login p::before {
-            left: 0;
-        }
-
-        .social-login p::after {
-            right: 0;
-        }
-
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .social-icon {
-            width: 40px;
+        .form1 input {
+            width: calc(100% - 22px);
             height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #f5f5f5;
-            transition: background-color 0.3s;
-        }
-
-        .social-icon:hover {
-            background-color: #e8e8e8;
-        }
-
-        .signup-link {
-            margin-top: 25px;
-            text-align: center;
-            color: #5f6368;
+            border-radius: 5px;
+            padding: 10px;
+            border: 1px solid gray;
+            margin-bottom: 10px;
             font-size: 14px;
         }
 
-        .signup-link a {
-            color: #1a73e8;
+        .button1 {
+            background-color: #c0392b;
+            color: white;
+            padding: 10px;
+            width: 100%;
             text-decoration: none;
-            font-weight: 500;
+            border-radius: 5px;
+            font-size: 15px;
+            transition: background-color 0.5s, color 0.5s;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
         }
 
-        .signup-link a:hover {
-            text-decoration: underline;
+        .button1:hover {
+            background-color: white;
+            color: #c0392b;
+            border: 1px solid #c0392b;
         }
 
-        @media (max-width: 480px) {
-            .container {
-                padding: 20px;
-                max-width: 320px;
-            }
+        .button2 {
+            color: black;
+            text-decoration: none;
+            font-size: 12px;
+            margin-top: 10px;
+            display: block;
+            transition: 0.1s;
+        }
 
-            .social-login p::before,
-            .social-login p::after {
-                width: 25%;
-            }
+        .button2:hover {
+            text-decoration: underline solid 1px black;
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="header">
-            <h2>Welcome back</h2>
-        </div>
-
+    <section class="sec0">
+        <h1>Log In</h1>
         {% if messages %}
         <div class="messages">
             {% for message in messages %}
@@ -238,26 +111,21 @@
         </div>
         {% endif %}
 
-
-        <form method="post">
+        <form method="POST" class="form1">
             {% csrf_token %}
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username" placeholder="Enter your username" required>
-            </div>
+            
+            <p>Username</p>
+            <input name="username" type="text" placeholder="Username" required>
 
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" placeholder="Enter your password" required>
-            </div>
+            <p>Password</p>
+            <input name="password" type="password" placeholder="Password" required>
 
-            <button type="submit" class="btn">Sign In</button>
+            <input class="button1" type="submit" name="Log-in" value="Log In">
         </form>
 
-        <div class="signup-link">
-            <p>Don't have an account? <a href="{% url 'core:signup' %}">Sign up</a></p>
-        </div>
-    </div>
+        <a href="{% url 'core:signup' %}" class="button2">Register</a>
+    </section>
 </body>
+
 
 </html>
