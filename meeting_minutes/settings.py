@@ -54,7 +54,7 @@ ROOT_URLCONF = 'meeting_minutes.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'meeting_minutes' / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
