@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User,auth
 
 @login_required
 def homepage(request):
@@ -46,3 +46,8 @@ def signup(request):
 @login_required
 def minutes(request):
     return render(request, 'minutes.html')
+
+def logout(request):
+    auth.logout(request)
+    return redirect('core:login')
+
