@@ -42,12 +42,16 @@
       background-color: white;
     }
   </style>
-  <body style="margin-top: 46px;">
-    <a href="{% url 'core:homepage'%}" style="text-decoration: none; color: black;">Back</a>
+  <body style="margin-top: 46px">
+    <a
+      href="{% url 'core:homepage'%}"
+      style="text-decoration: none; color: black"
+      >Back</a
+    >
     <h2 style="text-align: center">Meeting Minutes</h2>
     <hr />
     <form method="POST">
-    {% csrf_token %}
+      {% csrf_token %}
       <div class="box">
         <input class="input_style" type="date" name="date" id="" />
         <input
@@ -67,9 +71,16 @@
           id=""
           placeholder="Agenda"
         />
+        <label for="start_time">Start Time:</label>
+        <input class="input_style" type="time" name="start_time" required />
+
+        <label for="end_time">End Time:</label>
+        <input class="input_style" type="time" name="end_time" required />
         <h4 style="margin: 20px 0 0 0px">Discussion</h4>
         <textarea name="" id="" class="input_style"></textarea>
-        <button type="submit" name="minutes_form" class="submit_btn">SAVE</button>
+        <button type="submit" name="minutes_form" class="submit_btn">
+          SAVE
+        </button>
       </div>
     </form>
   </body>

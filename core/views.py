@@ -59,7 +59,10 @@ def minutes(request):
         agenda = request.POST.get('agenda')
         discussion = request.POST.get('discussion')
 
-        MeetingMinutes.objects.create(date=date, location=location, agenda=agenda, discussion=discussion)
+        start_time = request.POST.get('start_time')
+        end_time = request.POST.get('end_time')
+
+        MeetingMinutes.objects.create(date=date, location=location, agenda=agenda, discussion=discussion, start_time=start_time, end_time=end_time)
     return render(request, 'minutes.html')
 
 def logout(request):

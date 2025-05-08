@@ -8,6 +8,9 @@ class MeetingMinutes(models.Model):
     agenda=models.CharField(null=False, blank=False)
     discussion= models.TextField(null=True, blank=True)
 
+    start_time = models.TimeField(null=True, blank=True)
+    end_time = models.TimeField(null=True, blank=True)
+
     class Meta:
         verbose_name= 'MeetingMinutes'
 
