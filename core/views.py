@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
@@ -65,4 +65,9 @@ def minutes(request):
 def logout(request):
     auth.logout(request)
     return redirect('core:login')
+
+def delete_minutes(request, pk):
+    meeting = get_object_or_404(MeetingMinutes, pk=pk)
+    meeting.delete()
+    return redirect('core:homepage') 
 

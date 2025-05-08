@@ -54,9 +54,18 @@
 
   {% for meeting_minutes in all_meeting_minutes %}
     <div class="box">
-      <h4>{{ meeting_minutes.agenda }}</h4>
-      <h4>{{ meeting_minutes.date }}</h4>
+        <div>
+            <h4>{{ meeting_minutes.agenda }}</h4>
+            <h4>{{ meeting_minutes.date }}</h4>
+        </div>
+        <div>
+            <form method="POST" action="{% url 'core:delete_minutes' meeting_minutes.pk %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" style="background: red; color: white; border: none; padding: 6px 12px; border-radius: 4px;">Delete</button>
+            </form>
+        </div>
     </div>
-  {% endfor %}
+{% endfor %}
+
 </body>
 </html>
