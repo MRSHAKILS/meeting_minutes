@@ -53,6 +53,13 @@ def signup(request):
 
 @login_required
 def minutes(request):
+    if request.method == 'POST':
+        date = request.POST.get('date')
+        location = request.POST.get('location')
+        agenda = request.POST.get('agenda')
+        discussion = request.POST.get('discussion')
+
+        MeetingMinutes.objects.create(date=date, location=location, agenda=agenda, discussion=discussion)
     return render(request, 'minutes.html')
 
 def logout(request):
