@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #99a3a4;
+            margin: 0;
+        }
+
+        .sec0 {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .sec0 h1 {
+            margin-bottom: 20px;
+            background-color: #c0392b;
+            color: white;
+            padding: 20px 0;
+            font-size: 24px;
+            letter-spacing: 2px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .sec0 p {
+            margin: 20px 0 5px;
+            text-align: left;
+        }
+
+        .error {
+            color: red;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .form1 input {
+            width: calc(100% - 22px);
+            height: 40px;
+            border-radius: 5px;
+            padding: 10px;
+            border: 1px solid gray;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .button1 {
+            background-color: #c0392b;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 15px;
+            transition: background-color 0.5s, color 0.5s;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .button1:hover {
+            background-color: white;
+            color: #c0392b;
+            border: 1px solid #c0392b;
+        }
+
+        .button2 {
+            color: black;
+            text-decoration: none;
+            font-size: 12px;
+            margin-top: 10px;
+            display: block;
+            transition: 0.1s;
+        }
+
+        .button2:hover {
+            text-decoration: underline solid 1px black;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <section class="sec0">
+        <h1>Sign-Up</h1>
+
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <p class="error">{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <form method="POST" class="form1">
+            {% csrf_token %}
+            <p>Username</p>
+            <input name="username" type="text" placeholder="Username" required>
+
+            <p>Email</p>
+            <input name="email" type="email" placeholder="Email" required>
+
+            <p>Password</p>
+            <input name="password" type="password" placeholder="Password" required>
+
+            <p>Confirm Password</p>
+            <input name="confirm_password" type="password" placeholder="Confirm Password" required>
+
+            <input class="button1" type="submit" name="Sign-Up" value="Sign-Up/Register">
+        </form>
+
+        <a href="{% url 'core:login' %}" class="button2">Already have an account?</a>
+    </section>
+
+</body>
+
+</html>

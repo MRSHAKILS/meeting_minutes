@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meeting Minutes</title>
+</head>
+<style>
+  body {
+    font-family: sans-serif;
+    max-width: 1060px;
+    margin: auto;
+    position: relative;
+  }
+  .box {
+    margin: auto;
+    padding: 0 20px;
+    border: 1px solid #D9D9D9;
+    border-radius: 6px;
+    margin: 6px 0px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+  }
+  .add-button {
+    display: inline-block;
+    margin: 10px 0;
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+  }
+  .logout-button {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    padding: 8px 16px;
+    background-color: #d9534f;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+  }
+</style>
+<body>
+  <a href="{% url 'core:logout' %}" class="logout-button">Logout</a>
+
+  
+
+  <h1 style="text-align: center; color: #1d1d1d;">Meeting Minutes</h1>
+  <hr style="color: #D9D9D9;">
+
+  <a href="{% url 'core:minutes' %}" class="add-button">+ Add Meeting</a>
+
+  <p>Total entries: {{ all_meeting_minutes|length }}</p>
+
+  {% for meeting_minutes in all_meeting_minutes %}
+    <div class="box">
+        <div>
+            <h4>{{ meeting_minutes.agenda }}</h4>
+            <h4>{{ meeting_minutes.date }}</h4>
+        </div>
+        <div>
+            <form method="POST" action="{% url 'core:delete_minutes' meeting_minutes.pk %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" style="background: red; color: white; border: none; padding: 6px 12px; border-radius: 4px;">Delete</button>
+            </form>
+        </div>
+    </div>
+{% endfor %}
+
+</body>
+</html>
