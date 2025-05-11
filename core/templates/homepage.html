@@ -35,13 +35,13 @@ function myFunction() {
       font-family: Arial, sans-serif;
       }
 
-  body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            padding: 20px;
-            background: linear-gradient(90deg, #3F2B96 0%, #A8C0FF 100%);
-        }
+  body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px;
+    background: linear-gradient(90deg, #3F2B96 0%, #A8C0FF 100%);
+  }
 
   .sec0{
     display: flex;
@@ -59,25 +59,24 @@ function myFunction() {
   .sec1{
             display: flex;
             justify-content: end;
-            margin-right: 200px;
+            margin-right: 100px;
             margin-bottom: -10px;
         }
 
   .logout-button{
             text-decoration: none;
-            padding: 8px 16px;
+            padding: 7px 20px;
             background-color: white;
             color: #3F2B96;
-            border-radius: 4px;
-            transition: 0.1s;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
             border: none;
             border: 1px solid #3F2B96;
         }
 
   .logout-button:hover{
-            background-color: white;
-            color: #3F2B96;
-            border-color: #ffffff;
+            background-color: #3F2B96;
+            color: white;
         }
 
   .sec2 {
@@ -115,6 +114,23 @@ function myFunction() {
             color: #3F2B96;
         }
   
+  .delete-button{
+    background-color: #3F2B96;
+            color: white;
+            padding: 7px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 15px;
+            transition: 0.5s;
+            border: none;
+            border: 1px solid #3F2B96;  
+            margin-top: 5px;        
+  }
+  .delete-button:hover{
+            background-color: white;
+            color: #3F2B96;
+  }
+
   .sec3{
   margin: 10px 0px 20px 0px;
         }
@@ -170,7 +186,7 @@ function myFunction() {
           <div>
               <form method="POST" action="{% url 'core:delete_minutes' meeting_minutes.pk %}" style="display:inline;">
                   {% csrf_token %}
-                  <button type="submit" style="background: #3F2B96; color: white; border: none; padding: 6px 12px; border-radius: 4px; margin-top: 5px;">Delete</button>
+                  <button type="submit" class="delete-button">Delete</button>
               </form>
           </div>
       </div>

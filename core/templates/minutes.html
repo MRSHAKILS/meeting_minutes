@@ -7,80 +7,149 @@
     <title>Meeting Minutes</title>
   </head>
   <style>
-    body {
-      font-family: sans-serif;
-      max-width: 1060px;
-      margin: auto;
-    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+      }
+
+    body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px;
+    background: linear-gradient(90deg, #3F2B96 0%, #A8C0FF 100%);
+  }
+  .sec1{
+    display: flex;
+    justify-content: end;
+    margin-right: 100px;
+    margin-bottom: -10px;
+  }
+
+  .sec0{
+    display: flex;
+    margin: 0px 0px 0px 100px;
+  }
+  
+  .sec0 h1{
+    font-size: 30px;
+    padding-bottom: 10px;
+    color: white;
+  }
+
+  .back-button{
+            text-decoration: none;
+            padding: 7px 20px;
+            background-color: white;
+            color: #3F2B96;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+            border: none;
+            border: 1px solid #3F2B96;
+        }
+
+  .back-button:hover{
+            background-color: #3F2B96;
+            color: white;
+        }
+
     .box {
-      margin: auto;
       padding: 10px 20px;
-      border: 1px solid #d9d9d9;
-      border-radius: 6px;
-      margin: 6px 0px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      margin: 5px 100px 10px 100px;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
       display: flex;
       justify-content: space-between;
+      background-color: white;
     }
+  
+    .box h2{
+      font-size: 15px;
+      color: #3F2B96;
+    }
+    .box .part{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
     .input_style {
       text-decoration: none;
       border: 1px solid rgb(193, 193, 193);
       border-radius: 4px;
+      padding: 5px;
+      margin-left: 5px;
     }
+
+    .desc {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+    margin-bottom: 10px;
+    min-height: 100px;
+    
+  }
     .submit_btn {
       text-decoration: none;
-      background: #77b077;
-      border: 1px solid #77b077;
+      background: #3F2B96;
+      border: 1px solid #3F2B96;
       color: white;
-      width: 70px;
-      border-radius: 3px;
-      padding: 6px 16px;
+      border-radius: 5px;
+      padding: 5px 30px;
       transition: all 0.3s ease-in-out;
     }
     .submit_btn:hover {
-      color: #77b077;
+      color: #3F2B96;
       background-color: white;
     }
+
   </style>
-  <body style="margin-top: 46px">
-    <a
-      href="{% url 'core:homepage'%}"
-      style="text-decoration: none; color: black"
-      >Back</a
-    >
-    <h2 style="text-align: center">Meeting Minutes</h2>
-    <hr />
+
+  <body>
+    <section class="sec1"><!--back_button-->
+      <a class="back-button"  href="{% url 'core:homepage'%}">Back</a>
+    </section>
+
+    <section class="sec0">
+    <h1>Meeting Minutes</h1>
+    </section>
+
     <form method="POST">
       {% csrf_token %}
       <div class="box">
-        <input class="input_style" type="date" name="date" id="" />
-        <input
-          class="input_style"
-          type="text"
-          name="location"
-          id=""
-          placeholder="location"
-        />
+        <div class="part">
+          <h2>Enter meeting date:</h2>
+          <input class="input_style" type="date" name="date" id="" />
+        </div>
+        <div class="part">
+          <h2>Enter meeting venue:</h2>
+          <input class="input_style" type="text" name="location" id="" placeholder="Venue"/>
+        </div>
       </div>
-      <div class="box" style="display: flex; flex-direction: column; gap: 6px">
-        <input
-          class="input_style"
-          style="width: 100%; padding: 6px"
-          type="text"
-          name="agenda"
-          id=""
-          placeholder="Agenda"
-        />
-        <label for="start_time">Start Time:</label>
-        <input class="input_style" type="time" name="start_time" required />
 
-        <label for="end_time">End Time:</label>
-        <input class="input_style" type="time" name="end_time" required />
-        <h4 style="margin: 20px 0 0 0px">Discussion</h4>
-        <textarea name="" id="" class="input_style"></textarea>
-        <button type="submit" name="minutes_form" class="submit_btn">
-          SAVE
-        </button>
+      <div class="box" style="display: flex; flex-direction: column; gap: 5px">
+        
+        <h2 style="padding-top: 10px;">Meeting agenda:</h2>
+
+        <input class="input_style" style="margin-bottom: 10px;" type="text" name="agenda" id="" placeholder="Agenda"/> <!--Agenda-->
+
+        <label for="start_time"> <h2>Start Time:</h2> </label> <!--Start_time-->
+        <input class="input_style" type="time" name="start_time" style="margin-bottom: 10px;" required />
+
+        <label for="end_time"> <h2>End Time:</h2> </label> <!--End_time-->
+        <input class="input_style" type="time" name="end_time" style="margin-bottom: 10px;" required />
+
+        <h2>Discussion</h2>
+        <textarea name="" id="" class="desc" placeholder="Write your minutes here..." ></textarea>
+        <div>
+          <button type="submit" name="minutes_form" class="submit_btn">Save</button> <!--Save_button-->
+        </div>
+
       </div>
     </form>
   </body>
