@@ -62,7 +62,22 @@ def minutes(request):
         start_time = request.POST.get('start_time')
         end_time = request.POST.get('end_time')
 
-        MeetingMinutes.objects.create(date=date, location=location, agenda=agenda, discussion=discussion, start_time=start_time, end_time=end_time)
+        if not date or not location or not agenda:
+            messages.error(request, "Date, Location, and Agenda are required.")
+        else:
+            try:
+                MeetingMinutes.objects.create(
+                    date=date,
+                    location=location,
+                    agenda=agenda,
+                    discussion=discussion,
+                    start_time=start_time,
+                    end_time=end_time
+                )
+                messages.success(request, "Meeting minutes saved successfully.")
+                return redirect('core:homepage')  # Redirect to prevent resubmission
+            except Exception as e:
+                messages.error(request, f"Error saving data: {str(e)}")
     return render(request, 'minutes.html')
 
 def logout(request):
