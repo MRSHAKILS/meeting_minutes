@@ -121,7 +121,8 @@ def edit_minutes(request, pk):
         meeting.co_hosts = request.POST.get('co_hosts')
         meeting.guests = request.POST.get('guests')
         meeting.written_by = request.POST.get('written_by')
-        meeting.total_attendees = request.POST.get('total_attendees')
+        attendees = request.POST.get('total_attendees')
+        meeting.total_attendees = int(attendees) if attendees else None
         meeting.category = request.POST.get('category')
 
         meeting.save()
