@@ -52,7 +52,7 @@
 
   <a href="{% url 'core:minutes' %}" class="add-button">+ Add Meeting</a>
 
-  <p>Total entries: {{ all_meeting_minutes|length }}</p>
+  
 
   {% for meeting_minutes in all_meeting_minutes %}
   <div class="box">
@@ -66,6 +66,8 @@
           
           <!-- Delete Button -->
           <form method="POST" action="{% url 'core:delete_minutes' meeting_minutes.pk %}" style="display:inline;">
+          <a href="{% url 'core:minutes_detail' meeting_minutes.pk %}" class="details-button">Details</a>
+  
               {% csrf_token %}
               <button type="submit" style="background: red; color: white; border: none; padding: 6px 12px; border-radius: 4px;">Delete</button>
           </form>

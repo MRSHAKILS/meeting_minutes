@@ -11,7 +11,15 @@
       font-family: sans-serif;
       max-width: 1060px;
       margin: auto;
+      margin-top: 46px;
     }
+
+    .error {
+            color: red;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
     .box {
       margin: auto;
       padding: 10px 20px;
@@ -19,27 +27,33 @@
       border-radius: 6px;
       margin: 6px 0px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      display: flex;
-      justify-content: space-between;
     }
     .input_style {
       text-decoration: none;
       border: 1px solid rgb(193, 193, 193);
       border-radius: 4px;
+      padding: 6px;
+      margin: 6px 0;
+      width: 100%;
     }
     .submit_btn {
       text-decoration: none;
       background: #77b077;
       border: 1px solid #77b077;
       color: white;
-      width: 70px;
+      width: 100px;
       border-radius: 3px;
-      padding: 6px 16px;
+      padding: 8px 16px;
       transition: all 0.3s ease-in-out;
+      cursor: pointer;
     }
     .submit_btn:hover {
       color: #77b077;
       background-color: white;
+    }
+    label {
+      font-weight: bold;
+      margin-top: 10px;
     }
   </style>
   <body style="margin-top: 46px">
@@ -64,37 +78,49 @@
     {% endif %}
 
     <form method="POST">
-      {% csrf_token %}
-      <div class="box">
-        <input class="input_style" type="date" name="date" id="" />
-        <input
-          class="input_style"
-          type="text"
-          name="location"
-          id=""
-          placeholder="location"
-        />
-      </div>
-      <div class="box" style="display: flex; flex-direction: column; gap: 6px">
-        <input
-          class="input_style"
-          style="width: 100%; padding: 6px"
-          type="text"
-          name="agenda"
-          id=""
-          placeholder="Agenda"
-        />
-        <label for="start_time">Start Time:</label>
-        <input class="input_style" type="time" name="start_time" required />
+    {% csrf_token %}
+    <div class="box">
+      <label>Date:</label>
+      <input class="input_style" type="date" name="date" required />
 
-        <label for="end_time">End Time:</label>
-        <input class="input_style" type="time" name="end_time" required />
-        <h4 style="margin: 20px 0 0 0px">Discussion</h4>
-        <textarea name="discussion" id="" class="input_style"></textarea>
-        <button type="submit" name="minutes_form" class="submit_btn">
-          SAVE
-        </button>
-      </div>
-    </form>
+      <label>Start Time:</label>
+      <input class="input_style" type="time" name="start_time" required />
+
+      <label>End Time:</label>
+      <input class="input_style" type="time" name="end_time" required />
+
+      <label>Location:</label>
+      <input class="input_style" type="text" name="location" placeholder="Location" required />
+    </div>
+
+    <div class="box">
+      <label>Agenda:</label>
+      <input class="input_style" type="text" name="agenda" placeholder="Agenda" required />
+
+      <label>Discussion:</label>
+      <textarea name="discussion" class="input_style" rows="4" placeholder="Topic discussed..."></textarea>
+
+      <label>Host:</label>
+      <input class="input_style" type="text" name="hosts" placeholder="Main Host" />
+
+      <label>Co-Hosts:</label>
+      <input class="input_style" type="text" name="co_hosts" placeholder="Comma-separated co-hosts" />
+
+      <label>Guests:</label>
+      <textarea name="guests" class="input_style" rows="2" placeholder="Comma-separated guest names"></textarea>
+
+      <label>Written by:</label>
+      <input class="input_style" type="text" name="written_by" placeholder="Name of the person who wrote the minutes" />
+
+      <label>Total Attendees:</label>
+      <input class="input_style" type="number" name="total_attendees" min="0" placeholder="Total Attendees" />
+
+      <label>Category / Team:</label>
+      <input class="input_style" type="text" name="category" placeholder="Team or Department name" />
+
+      <br />
+      <button type="submit" class="submit_btn">SAVE</button>
+    </div>
+  </form>
   </body>
 </html>

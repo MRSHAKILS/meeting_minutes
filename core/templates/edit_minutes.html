@@ -68,47 +68,38 @@
     <form method="POST">
       {% csrf_token %}
       <div class="box">
-        
         <input class="input_style" type="date" name="date" value="{{ meeting.date|date:'Y-m-d' }}" />
-        
-        <input
-          class="input_style"
-          type="text"
-          name="location"
-          value="{{ meeting.location }}"
-          placeholder="Location"
-        />
+        <input class="input_style" type="text" name="location" value="{{ meeting.location }}" placeholder="Location" />
+        <input class="input_style" type="text" name="agenda" value="{{ meeting.agenda }}" placeholder="Agenda" />
       </div>
 
       <div class="box" style="flex-direction: column">
-        <input
-          class="input_style"
-          type="text"
-          name="agenda"
-          value="{{ meeting.agenda }}"
-          placeholder="Agenda"
-        />
-
         <label for="start_time">Start Time:</label>
-        <input
-          class="input_style"
-          type="time"
-          name="start_time"
-          value="{{ meeting.start_time|time:'H:i' }}"
-        />
+        <input class="input_style" type="time" name="start_time" value="{{ meeting.start_time|time:'H:i' }}" />
 
         <label for="end_time">End Time:</label>
-        <input
-          class="input_style"
-          type="time"
-          name="end_time"
-          value="{{ meeting.end_time|time:'H:i' }}"
-        />
+        <input class="input_style" type="time" name="end_time" value="{{ meeting.end_time|time:'H:i' }}" />
 
         <label for="discussion">Discussion:</label>
-        <textarea name="discussion" class="input_style">
-           {{ meeting.discussion }}</textarea
-        >
+        <textarea name="discussion" class="input_style">{{ meeting.discussion }}</textarea>
+
+        <label for="hosts">Host:</label>
+        <input class="input_style" type="text" name="hosts" value="{{ meeting.hosts }}" placeholder="Host" />
+
+        <label for="co_hosts">Co-Host(s):</label>
+        <input class="input_style" type="text" name="co_hosts" value="{{ meeting.co_hosts }}" placeholder="Co-Hosts (comma separated)" />
+
+        <label for="guests">Guests:</label>
+        <textarea name="guests" class="input_style" placeholder="Guests">{{ meeting.guests }}</textarea>
+
+        <label for="written_by">Written By:</label>
+        <input class="input_style" type="text" name="written_by" value="{{ meeting.written_by }}" placeholder="Written By" />
+
+        <label for="total_attendees">Total Attendees:</label>
+        <input class="input_style" type="number" name="total_attendees" value="{{ meeting.total_attendees }}" placeholder="Total Attendees" />
+
+        <label for="category">Category:</label>
+        <input class="input_style" type="text" name="category" value="{{ meeting.category }}" placeholder="Category (e.g. Team, Department)" />
 
         <button type="submit" class="submit_btn">Update</button>
       </div>
