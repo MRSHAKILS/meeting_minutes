@@ -89,3 +89,19 @@ def delete_minutes(request, pk):
     meeting.delete()
     return redirect('core:homepage') 
 
+
+def edit_minutes(request, pk):
+    meeting = MeetingMinutes.objects.get(pk=pk)
+
+    if request.method == 'POST':
+        meeting.date = request.POST.get('date')
+        meeting.location = request.POST.get('location')
+        meeting.agenda = request.POST.get('agenda')
+        meeting.discussion = request.POST.get('discussion')
+        meeting.start_time = request.POST.get('start_time')
+        meeting.end_time = request.POST.get('end_time')
+        meeting.save()
+        return redirect('core:homepage')
+
+    return render(request, 'edit_minutes.html', {'meeting': meeting})
+

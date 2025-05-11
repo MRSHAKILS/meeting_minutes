@@ -55,18 +55,22 @@
   <p>Total entries: {{ all_meeting_minutes|length }}</p>
 
   {% for meeting_minutes in all_meeting_minutes %}
-    <div class="box">
-        <div>
-            <h4>{{ meeting_minutes.agenda }}</h4>
-            <h4>{{ meeting_minutes.date }}</h4>
-        </div>
-        <div>
-            <form method="POST" action="{% url 'core:delete_minutes' meeting_minutes.pk %}" style="display:inline;">
-                {% csrf_token %}
-                <button type="submit" style="background: red; color: white; border: none; padding: 6px 12px; border-radius: 4px;">Delete</button>
-            </form>
-        </div>
-    </div>
+  <div class="box">
+      <div>
+          <h4>{{ meeting_minutes.agenda }}</h4>
+          <h4>{{ meeting_minutes.date }}</h4>
+      </div>
+      <div style="display: flex; gap: 10px;">
+          <!-- Edit Button -->
+          <a href="{% url 'core:edit_minutes' meeting_minutes.pk %}" style="background: #1976D2; color: white; padding: 6px 12px; border-radius: 4px; text-decoration: none;">Edit</a>
+          
+          <!-- Delete Button -->
+          <form method="POST" action="{% url 'core:delete_minutes' meeting_minutes.pk %}" style="display:inline;">
+              {% csrf_token %}
+              <button type="submit" style="background: red; color: white; border: none; padding: 6px 12px; border-radius: 4px;">Delete</button>
+          </form>
+      </div>
+  </div>
 {% endfor %}
 
 </body>
