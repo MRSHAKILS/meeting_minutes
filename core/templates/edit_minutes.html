@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Meeting</title>
+
+    <style>
+      body {
+        font-family: sans-serif;
+        max-width: 1060px;
+        margin: auto;
+        margin-top: 46px;
+      }
+      .box {
+        margin: auto;
+        padding: 10px 20px;
+        border: 1px solid #d9d9d9;
+        border-radius: 6px;
+        margin: 6px 0px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .input_style {
+        text-decoration: none;
+        border: 1px solid rgb(193, 193, 193);
+        border-radius: 4px;
+        padding: 6px;
+        flex: 1;
+        min-width: 200px;
+      }
+      .submit_btn {
+        text-decoration: none;
+        background: #1976d2;
+        border: 1px solid #1976d2;
+        color: white;
+        width: 100px;
+        border-radius: 3px;
+        padding: 8px 16px;
+        margin-top: 10px;
+        transition: all 0.3s ease-in-out;
+      }
+      .submit_btn:hover {
+        color: #1976d2;
+        background-color: white;
+      }
+      textarea {
+        min-height: 80px;
+        padding: 6px;
+      }
+      a.back-link {
+        text-decoration: none;
+        color: black;
+        display: inline-block;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="{% url 'core:homepage' %}" class="back-link">Back</a>
+
+    <h2 style="text-align: center">Edit Meeting</h2>
+    <hr />
+
+    <form method="POST">
+      {% csrf_token %}
+      <div class="box">
+        <input class="input_style" type="date" name="date" value="{{ meeting.date|date:'Y-m-d' }}" />
+        <input class="input_style" type="text" name="location" value="{{ meeting.location }}" placeholder="Location" />
+        <input class="input_style" type="text" name="agenda" value="{{ meeting.agenda }}" placeholder="Agenda" />
+      </div>
+
+      <div class="box" style="flex-direction: column">
+        <label for="start_time">Start Time:</label>
+        <input class="input_style" type="time" name="start_time" value="{{ meeting.start_time|time:'H:i' }}" />
+
+        <label for="end_time">End Time:</label>
+        <input class="input_style" type="time" name="end_time" value="{{ meeting.end_time|time:'H:i' }}" />
+
+        <label for="discussion">Discussion:</label>
+        <textarea name="discussion" class="input_style">{{ meeting.discussion }}</textarea>
+
+        <label for="hosts">Host:</label>
+        <input class="input_style" type="text" name="hosts" value="{{ meeting.hosts }}" placeholder="Host" />
+
+        <label for="co_hosts">Co-Host(s):</label>
+        <input class="input_style" type="text" name="co_hosts" value="{{ meeting.co_hosts }}" placeholder="Co-Hosts (comma separated)" />
+
+        <label for="guests">Guests:</label>
+        <textarea name="guests" class="input_style" placeholder="Guests">{{ meeting.guests }}</textarea>
+
+        <label for="written_by">Written By:</label>
+        <input class="input_style" type="text" name="written_by" value="{{ meeting.written_by }}" placeholder="Written By" />
+
+        <label for="total_attendees">Total Attendees:</label>
+        <input class="input_style" type="number" name="total_attendees" value="{{ meeting.total_attendees }}" placeholder="Total Attendees" />
+
+        <label for="category">Category:</label>
+        <input class="input_style" type="text" name="category" value="{{ meeting.category }}" placeholder="Category (e.g. Team, Department)" />
+
+        <button type="submit" class="submit_btn">Update</button>
+      </div>
+    </form>
+  </body>
+</html>

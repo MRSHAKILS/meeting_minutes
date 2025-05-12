@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Meeting Details</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 900px;
+      margin: 40px auto;
+      background-color: #f8f9fa;
+      color: #1d1d1d;
+    }
+
+    .container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .detail-row {
+      margin: 12px 0;
+    }
+
+    .label {
+      font-weight: bold;
+      display: inline-block;
+      min-width: 160px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 20px;
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="{% url 'core:homepage' %}" class="back-link">&larr; Back to homepage</a>
+
+    <h2>Meeting Details</h2>
+
+    <div class="detail-row"><span class="label">Date:</span> {{ meeting.date }}</div>
+    <div class="detail-row"><span class="label">Start Time:</span> {{ meeting.start_time }}</div>
+    <div class="detail-row"><span class="label">End Time:</span> {{ meeting.end_time }}</div>
+    <div class="detail-row"><span class="label">Location:</span> {{ meeting.location }}</div>
+    <div class="detail-row"><span class="label">Agenda:</span> {{ meeting.agenda }}</div>
+    <div class="detail-row"><span class="label">Discussion:</span> {{ meeting.discussion }}</div>
+
+    {% if meeting.hosts %}
+      <div class="detail-row"><span class="label">Host:</span> {{ meeting.hosts }}</div>
+    {% endif %}
+    {% if meeting.co_hosts %}
+      <div class="detail-row"><span class="label">Co-Hosts:</span> {{ meeting.co_hosts }}</div>
+    {% endif %}
+    {% if meeting.guests %}
+      <div class="detail-row"><span class="label">Guests:</span> {{ meeting.guests }}</div>
+    {% endif %}
+    {% if meeting.written_by %}
+      <div class="detail-row"><span class="label">Written By:</span> {{ meeting.written_by }}</div>
+    {% endif %}
+    {% if meeting.total_attendees %}
+      <div class="detail-row"><span class="label">Total Attendees:</span> {{ meeting.total_attendees }}</div>
+    {% endif %}
+    {% if meeting.category %}
+      <div class="detail-row"><span class="label">Category:</span> {{ meeting.category }}</div>
+    {% endif %}
+  </div>
+</body>
+</html>
