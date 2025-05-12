@@ -11,6 +11,12 @@ class MeetingMinutes(models.Model):
     start_time = models.TimeField(null=True, blank=True)
     end_time = models.TimeField(null=True, blank=True)
 
+    hosts = models.CharField(max_length=255, blank=True, null=True)
+    co_hosts = models.CharField(max_length=255, blank=True, null=True)
+    guests = models.TextField(blank=True, null=True)
+    written_by = models.CharField(max_length=100, blank=True, null=True)
+    total_attendees = models.PositiveIntegerField(blank=True, null=True)
+    category = models.CharField(max_length=100, blank=True, null=True)
     class Meta:
         verbose_name= 'MeetingMinutes'
 

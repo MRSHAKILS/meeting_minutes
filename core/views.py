@@ -58,11 +58,40 @@ def minutes(request):
         location = request.POST.get('location')
         agenda = request.POST.get('agenda')
         discussion = request.POST.get('discussion')
-
         start_time = request.POST.get('start_time')
         end_time = request.POST.get('end_time')
 
-        MeetingMinutes.objects.create(date=date, location=location, agenda=agenda, discussion=discussion, start_time=start_time, end_time=end_time)
+        # New fields
+        hosts = request.POST.get('hosts')
+        co_hosts = request.POST.get('co_hosts')
+        guests = request.POST.get('guests')
+        written_by = request.POST.get('written_by')
+        total_attendees = request.POST.get('total_attendees')
+        category = request.POST.get('category')
+
+        if not date or not location or not agenda:
+            messages.error(request, "Date, Location, and Agenda are required.")
+        else:
+            try:
+                MeetingMinutes.objects.create(
+                    date=date,
+                    location=location,
+                    agenda=agenda,
+                    discussion=discussion,
+                    start_time=start_time,
+                    end_time=end_time,
+                    hosts=hosts,
+                    co_hosts=co_hosts,
+                    guests=guests,
+                    written_by=written_by,
+                    total_attendees=total_attendees if total_attendees else None,
+                    category=category,
+                )
+                messages.success(request, "Meeting minutes saved successfully.")
+                return redirect('core:homepage')
+            except Exception as e:
+                messages.error(request, f"Error saving data: {str(e)}")
+
     return render(request, 'minutes.html')
 
 def logout(request):
@@ -73,4 +102,36 @@ def delete_minutes(request, pk):
     meeting = get_object_or_404(MeetingMinutes, pk=pk)
     meeting.delete()
     return redirect('core:homepage') 
+
+
+@login_required
+def edit_minutes(request, pk):
+    meeting = get_object_or_404(MeetingMinutes, pk=pk)
+
+    if request.method == 'POST':
+        meeting.date = request.POST.get('date')
+        meeting.location = request.POST.get('location')
+        meeting.agenda = request.POST.get('agenda')
+        meeting.discussion = request.POST.get('discussion')
+        meeting.start_time = request.POST.get('start_time')
+        meeting.end_time = request.POST.get('end_time')
+
+        
+        meeting.hosts = request.POST.get('hosts')
+        meeting.co_hosts = request.POST.get('co_hosts')
+        meeting.guests = request.POST.get('guests')
+        meeting.written_by = request.POST.get('written_by')
+        attendees = request.POST.get('total_attendees')
+        meeting.total_attendees = int(attendees) if attendees else None
+        meeting.category = request.POST.get('category')
+
+        meeting.save()
+        return redirect('core:homepage')
+
+    return render(request, 'edit_minutes.html', {'meeting': meeting})
+
+@login_required
+def minutes_detail(request, pk):
+    meeting = get_object_or_404(MeetingMinutes, pk=pk)
+    return render(request, 'minutes_detail.html', {'meeting': meeting})
 

@@ -184,14 +184,41 @@ function myFunction() {
             </table>
           </div>
           <div>
+            <!-- Edit Button -->
+            <a href="{% url 'core:edit_minutes' meeting_minutes.pk %}" style="background: #1976D2; color: white; padding: 6px 12px; border-radius: 4px; text-decoration: none;">Edit</a>
+
               <form method="POST" action="{% url 'core:delete_minutes' meeting_minutes.pk %}" style="display:inline;">
+              <a href="{% url 'core:minutes_detail' meeting_minutes.pk %}" class="details-button">Details</a>
                   {% csrf_token %}
+
+                  <!-- Delete Button -->
                   <button type="submit" class="delete-button">Delete</button>
               </form>
           </div>
       </div>
   {% endfor %}
 </section>
+<!--
+  {% for meeting_minutes in all_meeting_minutes %}
+  <div class="box">
+      <div>
+          <h4>{{ meeting_minutes.agenda }}</h4>
+          <h4>{{ meeting_minutes.date }}</h4>
+      </div>
+      <div style="display: flex; gap: 10px;">
+
+          <a href="{% url 'core:edit_minutes' meeting_minutes.pk %}" style="background: #1976D2; color: white; padding: 6px 12px; border-radius: 4px; text-decoration: none;">Edit</a>
+          
+          <form method="POST" action="{% url 'core:delete_minutes' meeting_minutes.pk %}" style="display:inline;">
+          <a href="{% url 'core:minutes_detail' meeting_minutes.pk %}" class="details-button">Details</a>
+  
+              {% csrf_token %}
+              <button type="submit" style="background: red; color: white; border: none; padding: 6px 12px; border-radius: 4px;">Delete</button>
+          </form>
+      </div>
+  </div>
+{% endfor %}
+-->
 
 </body>
 </html>
