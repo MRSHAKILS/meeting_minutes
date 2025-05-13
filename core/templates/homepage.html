@@ -57,31 +57,31 @@ function myFunction() {
   }
 
   .sec1{
-            display: flex;
-            justify-content: end;
-            margin-right: 100px;
-            margin-bottom: -10px;
+      display: flex;
+      justify-content: end;
+      margin-right: 100px;
+      margin-bottom: -10px;
         }
 
   .logout-button{
-            text-decoration: none;
-            padding: 7px 20px;
-            background-color: white;
-            color: #3F2B96;
-            border-radius: 5px;
-            transition: all 0.3s ease-in-out;
-            border: none;
-            border: 1px solid #3F2B96;
+      text-decoration: none;
+      padding: 7px 20px;
+      background-color: white;
+      color: #3F2B96;
+      border-radius: 5px;
+      transition: all 0.3s ease-in-out;
+      border: none;
+      border: 1px solid #3F2B96;
         }
 
   .logout-button:hover{
-            background-color: #3F2B96;
-            color: white;
+      background-color: #3F2B96;
+      color: white;
         }
 
   .sec2 {
-            display: flex;
-            justify-content: center;
+      display: flex;
+      justify-content: center;
         }
         
 
@@ -98,49 +98,67 @@ function myFunction() {
     color: #3F2B96;
   }
   .add-button{
-    background-color: #3F2B96;
-            color: white;
-            padding: 10px 30px;
-            text-decoration: none;
-            border-radius: 10px;
-            font-size: 15px;
-            transition: 0.5s;
-            border: none;
-            margin: 30px 0px 20px 0px;
-            border: 1px solid #3F2B96;          
+        background-color: #3F2B96;
+        color: white;
+        padding: 10px 30px;
+        text-decoration: none;
+        border-radius: 10px;
+        font-size: 15px;
+        transition: 0.5s;
+        border: none;
+        margin: 30px 0px 20px 0px;
+        border: 1px solid #3F2B96;          
   }
   .add-button:hover{
-            background-color: white;
-            color: #3F2B96;
+        background-color: white;
+        color: #3F2B96;
         }
   
-  .delete-button{
-    background-color: #3F2B96;
-            color: white;
-            padding: 7px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 15px;
-            transition: 0.5s;
-            border: none;
-            border: 1px solid #3F2B96;  
-            margin-top: 5px;        
+.edit-button, .details-button{
+        background-color: #3F2B96;
+        color: white;
+        padding: 7px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 15px;
+        transition: 0.5s;
+        border: none;
+        border: 1px solid #3F2B96;  
+        margin-top: 5px;        
   }
+ .edit-button:hover, .details-button:hover{
+        background-color: white;
+        color: #3F2B96;
+  }
+
+    .delete-button{
+        background-color: white;
+        color: #3F2B96;
+        padding: 7px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 15px;
+        transition: 0.5s;
+        border: none;
+        border: 1px solid #3F2B96;  
+        margin-top: 5px;        
+  }
+
   .delete-button:hover{
-            background-color: white;
-            color: #3F2B96;
+        background-color: #3F2B96;
+        color: white;
   }
 
   .sec3{
-  margin: 10px 0px 20px 0px;
+  margin: -30px 0px 20px 0px;
         }
   .search_bar{
-            background: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 10px;
-            width: 100%;
-            max-width: 250px;
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+        width: 100%;
+        max-width: 250px;
 }
 .sec3 h2{
   font-size: 20px;
@@ -177,15 +195,13 @@ function myFunction() {
       <div class="box meeting-box">
           <div>
             <table id="table" style="width:100%">
-              <tr>
-                <td><h4>{{meeting_minutes.agenda}}</h4></td>
-              </tr>
-                <h4>{{meeting_minutes.date}}</h4>
+              <h4>{{meeting_minutes.date}}</h4>
+              <h4>{{meeting_minutes.agenda}}</h4>
             </table>
           </div>
           <div>
             <!-- Edit Button -->
-            <a href="{% url 'core:edit_minutes' meeting_minutes.pk %}" style="background: #1976D2; color: white; padding: 6px 12px; border-radius: 4px; text-decoration: none;">Edit</a>
+            <a href="{% url 'core:edit_minutes' meeting_minutes.pk %}" class="edit-button">Edit</a>
 
               <form method="POST" action="{% url 'core:delete_minutes' meeting_minutes.pk %}" style="display:inline;">
               <a href="{% url 'core:minutes_detail' meeting_minutes.pk %}" class="details-button">Details</a>

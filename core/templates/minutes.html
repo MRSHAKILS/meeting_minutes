@@ -83,8 +83,8 @@
     
     .input_style {
       text-decoration: none;
-      border: 1px solid rgb(193, 193, 193);
-      border-radius: 4px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
       padding: 5px;
       margin-left: 5px;
     }
@@ -127,6 +127,7 @@
 
     <form method="POST">
       {% csrf_token %}
+
       <div class="box">
         <div class="part">
           <h2>Enter meeting date:</h2>
@@ -141,8 +142,7 @@
       <div class="box" style="display: flex; flex-direction: column; gap: 5px">
         
         <h2 style="padding-top: 10px;">Meeting agenda:</h2> <!--Agenda-->
-
-        <input class="input_style" style="margin-bottom: 10px;" type="text" name="agenda" id="" placeholder="Agenda"/> <!--Agenda-->
+        <input class="input_style" style="margin-bottom: 10px;" type="text" name="agenda" id="" placeholder="Agenda"/>
 
         <label for="start_time"> <h2>Start Time:</h2> </label> <!--Start_time-->
         <input class="input_style" type="time" name="start_time" style="margin-bottom: 10px;" required />
@@ -150,26 +150,27 @@
         <label for="end_time"> <h2>End Time:</h2> </label> <!--End_time-->
         <input class="input_style" type="time" name="end_time" style="margin-bottom: 10px;" required />
 
-        <label>Host:</label>
-        <input class="input_style" type="text" name="hosts" placeholder="Main Host" /> <!--Host-->
+        <label> <h2>Host:</h2> </label>
+        <input class="input_style" type="text" name="hosts" placeholder="Host" style="margin-bottom: 10px;"/> <!--Host-->
 
-        <label>Co-Hosts:</label>
-        <input class="input_style" type="text" name="co_hosts" placeholder="Comma-separated co-hosts" /> <!--Co-host-->
+        <label> <h2>Co-Hosts:</h2> </label>
+        <input class="input_style" type="text" name="co_hosts" placeholder="Co-hosts" style="margin-bottom: 10px;"/> <!--Co-host-->
         
-        <label>Guests:</label>
-        <textarea name="guests" class="input_style" rows="2" placeholder="Comma-separated guest names"></textarea> <!--Guest-->
+        <label> <h2>Guests:</h2> </label>
+        <textarea name="guests" class="input_style" rows="2" placeholder="Guests" style="margin-bottom: 10px; min-height: 30px; resize: vertical;"></textarea> <!--Guest-->
 
-        <label>Written by:</label>
-        <input class="input_style" type="text" name="written_by" placeholder="Name of the person who wrote the minutes" /> <!--Writer-->
+        <label> <h2>Written by:</h2> </label>
+        <input class="input_style" type="text" name="written_by" placeholder="Writer" style="margin-bottom: 10px;"/> <!--Writer-->
 
-        <label>Total Attendees:</label>
-        <input class="input_style" type="number" name="total_attendees" min="0" placeholder="Total Attendees" /> <!--Attendees-->
+        <label> <h2>Total Attendees:</h2> </label>
+        <input class="input_style" type="number" name="total_attendees" min="0" placeholder="Number of Attendees" style="margin-bottom: 10px;"/> <!--Attendees-->
 
-        <label>Category / Team:</label>
-        <input class="input_style" type="text" name="category" placeholder="Team or Department name" /> <!--Team-->
+        <label> <h2>Category/Team:</h2> </label>
+        <input class="input_style" type="text" name="category" placeholder="Team or Department name" style="margin-bottom: 10px;"/> <!--Team-->
 
         <h2>Discussion</h2>
-        <textarea name="" id="" class="desc" placeholder="Write your minutes here..." ></textarea> <!--Discussion-->
+        <textarea name="discussion" id="" class="desc" placeholder="Write your minutes here..." ></textarea> <!--Discussion-->
+
         <div>
           <button type="submit" name="minutes_form" class="submit_btn">Save</button> <!--Save_button-->
         </div>

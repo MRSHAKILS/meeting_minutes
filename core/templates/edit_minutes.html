@@ -5,103 +5,176 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit Meeting</title>
 
-    <style>
-      body {
-        font-family: sans-serif;
-        max-width: 1060px;
-        margin: auto;
-        margin-top: 46px;
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
       }
-      .box {
-        margin: auto;
-        padding: 10px 20px;
-        border: 1px solid #d9d9d9;
-        border-radius: 6px;
-        margin: 6px 0px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 10px;
-      }
-      .input_style {
-        text-decoration: none;
-        border: 1px solid rgb(193, 193, 193);
-        border-radius: 4px;
-        padding: 6px;
-        flex: 1;
-        min-width: 200px;
-      }
-      .submit_btn {
-        text-decoration: none;
-        background: #1976d2;
-        border: 1px solid #1976d2;
-        color: white;
-        width: 100px;
-        border-radius: 3px;
-        padding: 8px 16px;
-        margin-top: 10px;
-        transition: all 0.3s ease-in-out;
-      }
-      .submit_btn:hover {
-        color: #1976d2;
-        background-color: white;
-      }
-      textarea {
-        min-height: 80px;
-        padding: 6px;
-      }
-      a.back-link {
-        text-decoration: none;
-        color: black;
-        display: inline-block;
-        margin-bottom: 10px;
-      }
-    </style>
+
+    body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px;
+    background: linear-gradient(90deg, #3F2B96 0%, #A8C0FF 100%);
+  }
+  .sec1{
+    display: flex;
+    justify-content: end;
+    margin-right: 100px;
+    margin-bottom: -10px;
+  }
+
+  .sec0{
+    display: flex;
+    margin: 0px 0px 0px 100px;
+  }
+  
+  .sec0 h1{
+    font-size: 30px;
+    padding-bottom: 10px;
+    color: white;
+  }
+
+  .back-button{
+            text-decoration: none;
+            padding: 7px 20px;
+            background-color: white;
+            color: #3F2B96;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+            border: none;
+            border: 1px solid #3F2B96;
+        }
+
+  .back-button:hover{
+            background-color: #3F2B96;
+            color: white;
+        }
+    .error {
+            color: red;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+    .box {
+      padding: 10px 20px;
+      border-radius: 10px;
+      margin: 5px 100px 10px 100px;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      display: flex;
+      justify-content: space-between;
+      background-color: white;
+    }
+  
+    .box h2{
+      font-size: 15px;
+      color: #3F2B96;
+    }
+    .box .part{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .input_style {
+      text-decoration: none;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 5px;
+      margin-left: 5px;
+      
+    }
+
+    .desc {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+    margin-bottom: 10px;
+    min-height: 100px;
+    
+  }
+    .update_btn {
+      text-decoration: none;
+      background: #3F2B96;
+      border: 1px solid #3F2B96;
+      color: white;
+      border-radius: 5px;
+      padding: 5px 30px;
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+    }
+    .update_btn:hover {
+      color: #3F2B96;
+      background-color: white;
+    }
+
+  </style>
   </head>
   <body>
-    <a href="{% url 'core:homepage' %}" class="back-link">Back</a>
+    <section class="sec1"><!--back_button-->
+      <a class="back-button" href="{% url 'core:homepage'%}">Back</a>
+    </section>
 
-    <h2 style="text-align: center">Edit Meeting</h2>
-    <hr />
+    <section class="sec0">
+    <h1>Edit Minutes</h1>
+    </section>
 
     <form method="POST">
       {% csrf_token %}
+
       <div class="box">
-        <input class="input_style" type="date" name="date" value="{{ meeting.date|date:'Y-m-d' }}" />
-        <input class="input_style" type="text" name="location" value="{{ meeting.location }}" placeholder="Location" />
-        <input class="input_style" type="text" name="agenda" value="{{ meeting.agenda }}" placeholder="Agenda" />
+        <div class="part">
+          <h2>Enter meeting date:</h2>
+          <input class="input_style" type="date" name="date" value="{{ meeting.date|date:'Y-m-d' }}"/>
+        </div>
+        <div class="part">
+          <h2>Enter meeting venue:</h2>
+          <input class="input_style" type="text" name="location" value="{{ meeting.location }}" placeholder="Venue"/>
+        </div>
       </div>
 
-      <div class="box" style="flex-direction: column">
-        <label for="start_time">Start Time:</label>
-        <input class="input_style" type="time" name="start_time" value="{{ meeting.start_time|time:'H:i' }}" />
+      <div class="box" style="display: flex; flex-direction: column; gap: 5px">
+        
+        <h2 style="padding-top: 10px;">Meeting agenda:</h2> <!--Agenda-->
+        <input class="input_style" style="margin-bottom: 10px;" type="text" name="agenda" value="{{ meeting.agenda }}" placeholder="Agenda"/>
 
-        <label for="end_time">End Time:</label>
-        <input class="input_style" type="time" name="end_time" value="{{ meeting.end_time|time:'H:i' }}" />
+        <label for="start_time"> <h2>Start Time:</h2> </label> <!--Start_time-->
+        <input class="input_style" type="time" name="start_time" value="{{ meeting.start_time|time:'H:i' }}" style="margin-bottom: 10px;" required />
 
-        <label for="discussion">Discussion:</label>
-        <textarea name="discussion" class="input_style">{{ meeting.discussion }}</textarea>
+        <label for="end_time"> <h2>End Time:</h2> </label> <!--End_time-->
+        <input class="input_style" type="time" name="end_time" value="{{ meeting.end_time|time:'H:i' }}" style="margin-bottom: 10px;" required />
 
-        <label for="hosts">Host:</label>
-        <input class="input_style" type="text" name="hosts" value="{{ meeting.hosts }}" placeholder="Host" />
+        <label> <h2>Host:</h2> </label>
+        <input class="input_style" type="text" name="hosts" value="{{ meeting.hosts }}" placeholder="Host" style="margin-bottom: 10px;"/> <!--Host-->
 
-        <label for="co_hosts">Co-Host(s):</label>
-        <input class="input_style" type="text" name="co_hosts" value="{{ meeting.co_hosts }}" placeholder="Co-Hosts (comma separated)" />
+        <label> <h2>Co-Hosts:</h2> </label>
+        <input class="input_style" type="text" name="co_hosts" value="{{ meeting.co_hosts }}" placeholder="Co-hosts" style="margin-bottom: 10px;"/> <!--Co-host-->
+        
+        <label> <h2>Guests:</h2> </label>
+        <textarea name="guests" class="input_style" rows="2" placeholder="Guests" style="margin-bottom: 10px; min-height: 30px; resize: vertical;">{{ meeting.guests }}</textarea> <!--Guest-->
 
-        <label for="guests">Guests:</label>
-        <textarea name="guests" class="input_style" placeholder="Guests">{{ meeting.guests }}</textarea>
+        <label> <h2>Written by:</h2> </label>
+        <input class="input_style" type="text" name="written_by" value="{{ meeting.written_by }}" placeholder="Writer" style="margin-bottom: 10px;"/> <!--Writer-->
 
-        <label for="written_by">Written By:</label>
-        <input class="input_style" type="text" name="written_by" value="{{ meeting.written_by }}" placeholder="Written By" />
+        <label> <h2>Total Attendees:</h2> </label>
+        <input class="input_style" type="number" name="total_attendees" value="{{ meeting.total_attendees }}" min="0" placeholder="Number of Attendees" style="margin-bottom: 10px;"/> <!--Attendees-->
 
-        <label for="total_attendees">Total Attendees:</label>
-        <input class="input_style" type="number" name="total_attendees" value="{{ meeting.total_attendees }}" placeholder="Total Attendees" />
+        <label> <h2>Category/Team:</h2> </label>
+        <input class="input_style" type="text" name="category" value="{{ meeting.category }}" placeholder="Team or Department name" style="margin-bottom: 10px;"/> <!--Team-->
 
-        <label for="category">Category:</label>
-        <input class="input_style" type="text" name="category" value="{{ meeting.category }}" placeholder="Category (e.g. Team, Department)" />
+        <h2>Discussion</h2>
+        <textarea name="discussion" id="" class="desc" placeholder="Write your minutes here..." >{{ meeting.discussion }}</textarea> <!--Discussion-->
 
-        <button type="submit" class="submit_btn">Update</button>
+        <div>
+          <button type="submit" name="minutes_form" class="update_btn">Save</button> <!--Update_button-->
+        </div>
+
       </div>
     </form>
   </body>

@@ -6,6 +6,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Meeting Details</title>
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body{
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      padding: 20px;
+      background: linear-gradient(90deg, #3F2B96 0%, #A8C0FF 100%);
+    }
+
+  .edit-button, .details-button{
+    background-color: #3F2B96;
+            color: white;
+            padding: 7px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 15px;
+            transition: 0.5s;
+            border: none;
+            border: 1px solid #3F2B96;  
+            margin-top: 5px;        
+  }
+ .edit-button:hover, .details-button:hover{
+            background-color: white;
+            color: #3F2B96;
+  }
     body {
       font-family: sans-serif;
       max-width: 900px;
@@ -40,7 +71,7 @@
       display: inline-block;
       margin-bottom: 20px;
       text-decoration: none;
-      color: #007bff;
+      color: #3F2B96;
     }
 
     .back-link:hover {
@@ -50,7 +81,7 @@
 </head>
 <body>
   <div class="container">
-    <a href="{% url 'core:homepage' %}" class="back-link">&larr; Back to homepage</a>
+    <a href="{% url 'core:homepage' %}" class="back-link"> Back to homepage</a>
 
     <h2>Meeting Details</h2>
 
