@@ -13,4 +13,6 @@ urlpatterns = [
 
     path('edit/<int:pk>/', views.edit_minutes, name='edit_minutes'),
     path("minutes/<int:pk>/", views.minutes_detail, name="minutes_detail"),
+    
+    path('api/meeting-minutes/<int:pk>/autosave/', views.autosave_meeting_minutes, name='autosave_meeting_minutes'),
 ]
