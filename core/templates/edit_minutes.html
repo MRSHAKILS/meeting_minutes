@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit Meeting</title>
 
+    <script src="https://kit.fontawesome.com/8254fe1519.js" crossorigin="anonymous"></script>
+
   <style>
 
     * {
@@ -114,11 +116,45 @@
       background-color: white;
     }
 
+    @media (max-width: 768px){
+  .box {
+    border-radius: 10px;
+    margin: 5px 0px 10px 0px;
+  }
+  .sec1{
+    margin-right: 0px;
+  }
+  .sec0{
+    margin: 0px;
+  }
+}
+
+
+@media (max-width: 600px){
+  .sec0{
+    margin: 0px;
+  }
+  .box {
+    border-radius: 10px;
+    margin: 5px 0px 10px 0px;
+  }
+  .sec1{
+    margin-right: 0px;
+  }
+  .box .part{
+      display: block;
+      padding: 10px 0px;
+    }
+  .box h2{
+    padding-bottom: 5px;
+  }
+}
+
   </style>
   </head>
   <body>
     <section class="sec1"><!--back_button-->
-      <a class="back-button" href="{% url 'core:homepage'%}">Back</a>
+      <a class="back-button" href="{% url 'core:homepage'%}"> <i class="fa-solid fa-arrow-left"></i> Back</a>
     </section>
 
     <section class="sec0">
