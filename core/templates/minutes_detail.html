@@ -5,7 +5,41 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Meeting Details</title>
+
+  <script src="https://kit.fontawesome.com/8254fe1519.js" crossorigin="anonymous"></script>
+
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body{
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      padding: 20px;
+      background: linear-gradient(90deg, #3F2B96 0%, #A8C0FF 100%);
+    }
+
+  .edit-button, .details-button{
+    background-color: #3F2B96;
+            color: white;
+            padding: 7px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 15px;
+            transition: 0.5s;
+            border: none;
+            border: 1px solid #3F2B96;  
+            margin-top: 5px;        
+  }
+ .edit-button:hover, .details-button:hover{
+            background-color: white;
+            color: #3F2B96;
+  }
     body {
       font-family: sans-serif;
       max-width: 900px;
@@ -21,45 +55,51 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    h2 {
+
+
+    h2{
       text-align: center;
-      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid gray;
+      color: #3F2B96;
+      margin-bottom: 30px;
     }
 
     .detail-row {
-      margin: 12px 0;
+      margin: 12px 0px;
+      color: rgb(100, 100, 100);
     }
 
     .label {
       font-weight: bold;
       display: inline-block;
       min-width: 160px;
+      color: #3F2B96;
     }
 
     .back-link {
       display: inline-block;
       margin-bottom: 20px;
       text-decoration: none;
-      color: #007bff;
+      color: #3F2B96;
     }
 
     .back-link:hover {
       text-decoration: underline;
     }
+
   </style>
 </head>
 <body>
   <div class="container">
-    <a href="{% url 'core:homepage' %}" class="back-link">&larr; Back to homepage</a>
+    <a href="{% url 'core:homepage' %}" class="back-link"> <i class="fa-solid fa-arrow-left"></i>  Back to homepage</a>
 
-    <h2>Meeting Details</h2>
+    <h2>Meeting Minutes</h2>
 
     <div class="detail-row"><span class="label">Date:</span> {{ meeting.date }}</div>
-    <div class="detail-row"><span class="label">Start Time:</span> {{ meeting.start_time }}</div>
-    <div class="detail-row"><span class="label">End Time:</span> {{ meeting.end_time }}</div>
-    <div class="detail-row"><span class="label">Location:</span> {{ meeting.location }}</div>
+    <div class="detail-row"><span class="label">Time:</span> {{ meeting.start_time }} - {{ meeting.end_time }}</div>
+    <div class="detail-row"><span class="label">Venue:</span> {{ meeting.location }}</div>
     <div class="detail-row"><span class="label">Agenda:</span> {{ meeting.agenda }}</div>
-    <div class="detail-row"><span class="label">Discussion:</span> {{ meeting.discussion }}</div>
 
     {% if meeting.hosts %}
       <div class="detail-row"><span class="label">Host:</span> {{ meeting.hosts }}</div>
@@ -79,6 +119,10 @@
     {% if meeting.category %}
       <div class="detail-row"><span class="label">Category:</span> {{ meeting.category }}</div>
     {% endif %}
+    
+    <div class="detail-row"><span class="label" style="margin-bottom: 10px;">Discussion:</span> <br> {{ meeting.discussion }}</div>
+
   </div>
+
 </body>
 </html>

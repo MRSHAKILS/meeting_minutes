@@ -11,7 +11,7 @@
 <script>
 function myFunction() {
     let input = document.getElementById('search_bar').value.toLowerCase();
-    let boxes = document.querySelectorAll('.box');
+    let boxes = document.querySelectorAll('.meeting-box');
 
     boxes.forEach(function(box) {
         let headings = box.querySelectorAll('h4');
@@ -26,8 +26,6 @@ function myFunction() {
     });
 }
 </script>
-
-<style>
 
 <style>
   * {
@@ -59,31 +57,30 @@ function myFunction() {
   }
 
   .sec1{
-            display: flex;
-            justify-content: end;
-            margin-right: 100px;
-            margin-bottom: -10px;
+      display: flex;
+      justify-content: end;
+      margin-bottom: -10px;
         }
 
   .logout-button{
-            text-decoration: none;
-            padding: 7px 20px;
-            background-color: white;
-            color: #3F2B96;
-            border-radius: 5px;
-            transition: all 0.3s ease-in-out;
-            border: none;
-            border: 1px solid #3F2B96;
+      text-decoration: none;
+      padding: 7px 20px;
+      background-color: white;
+      color: #3F2B96;
+      border-radius: 5px;
+      transition: all 0.3s ease-in-out;
+      border: none;
+      border: 1px solid #3F2B96;
         }
 
   .logout-button:hover{
-            background-color: #3F2B96;
-            color: white;
+      background-color: #3F2B96;
+      color: white;
         }
 
   .sec2 {
-            display: flex;
-            justify-content: center;
+      display: flex;
+      justify-content: center;
         }
         
 
@@ -99,47 +96,160 @@ function myFunction() {
     background-color: white;
     color: #3F2B96;
   }
-  .add-button {
-    display: inline-block;
-    margin: 10px 0;
-    padding: 8px 16px;
-    background-color: #4CAF50;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
+  .add-button{
+        background-color: #3F2B96;
+        color: white;
+        padding: 10px 30px;
+        text-decoration: none;
+        border-radius: 10px;
+        font-size: 15px;
+        transition: 0.5s;
+        border: none;
+        margin: 30px 0px 20px 0px;
+        border: 1px solid #3F2B96;          
   }
-  .logout-button {
-    position: absolute;
-    top: 20px;
-    right: 0;
-    padding: 8px 16px;
-    background-color: #d9534f;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
+  .add-button:hover{
+        background-color: white;
+        color: #3F2B96;
+        }
+  
+.edit-button, .details-button{
+        background-color: #3F2B96;
+        color: white;
+        padding: 7px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 15px;
+        transition: 0.5s;
+        border: none;
+        border: 1px solid #3F2B96;  
+        margin-top: 5px;        
+  }
+  .edit-button:hover, .details-button:hover{
+        background-color: white;
+        color: #3F2B96;
+  }
+
+  .delete-button, .close-button ,.modal-button{
+        background-color: white;
+        color: #3F2B96;
+        padding: 7px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 15px;
+        transition: 0.5s;
+        border: none;
+        border: 1px solid #3F2B96;  
+        margin-top: 5px;        
+  }
+
+  .delete-button:hover, .close-button:hover, .modal-button:hover{
+        background-color: #3F2B96;
+        color: white;
   }
 
   .sec3{
-  margin: 10px 0px 20px 0px;
+  margin: -30px 0px 20px 0px;
         }
   .search_bar{
-            background: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 10px;
-            width: 100%;
-            max-width: 250px;
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+        width: 100%;
+        max-width: 250px;
 }
 .sec3 h2{
   font-size: 20px;
         }
 
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 40vh;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: white;
+  margin: auto;
+  border: 1px solid #3F2B96;
+  width: 40%;
+  border-radius: 10px;
+  padding: 30px 0px;
+}
+
+.hamburger{
+  display: none;
+  position: relative;
+  margin-top: 10px;
+}
+
+.hamburger .menu-links{
+  display: none;
+  position: absolute;
+    top: 100%;
+    right: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    padding: 5px 0;
+    width: max-content;
+}
+
+.hamburger a.icon {
+  color: #3F2B96;
+  padding: 10px;
+  transition: 0.5s;
+  border-radius: 5px;
+}
+
+.hamburger a:hover {
+  background-color: #3F2B96;
+  color: white;
+}
+@media (max-width: 600px){
+  .btns{
+    display: none;
+  }
+  .hamburger{
+    display: block;
+  }
+  .details-button, .edit-button{
+  padding: 7px 10px;
+  text-decoration: none;
+  display: block;
+  margin: 0px;
+  border-radius: 0px;
+  border: 1px solid #3F2B96;
+}
+.modal-button{
+  padding: 7px 11px;
+  text-decoration: none;
+  display: block;
+  margin: 0px;
+  border-radius: 0px;
+  border: 2px solid #3F2B96;
+}
+.add-button{
+  margin: 20px 0px 30px 0px;
+}
+.modal-content {
+  width: 60%;
+}
+}
 
 </style>
 
 <body>
   <section class="sec1"><!--logout-->
-        <a class="logout-button" href="{% url 'core:logout' %}">Log out</a>
+        <a class="logout-button" href="{% url 'core:logout' %}"> <i class="fa-solid fa-right-from-bracket"></i> Log out</a>
   </section>
 
   <section class="sec0">
@@ -147,12 +257,10 @@ function myFunction() {
   </section>
 
 <section class="sec2">
-  <a href="{% url 'core:minutes' %}" class="add-button">+ Add Meeting</a>
+  <a href="{% url 'core:minutes' %}" class="add-button"> <i class="fa-solid fa-plus"></i> Add Meeting</a>
 </section>
 
-  <p>Total entries: {{ all_meeting_minutes|length }}</p>
-
-  <section class="sec3" style="color: white;"> <!--searchbar-->
+<section class="sec3" style="color: white;"> <!--searchbar-->
         <div>
             <h2> Search <i class="fa-solid fa-magnifying-glass"></i></h2>
         </div>
@@ -161,6 +269,95 @@ function myFunction() {
         </div>
     </section>
 
+  <p style="color: white;">Total entries: {{ all_meeting_minutes|length }}</p>
+
+  <section class="sec4">
+    {% for meeting_minutes in all_meeting_minutes %}
+      <div class="box meeting-box">
+          <div>
+            <table id="table" style="width:100%">
+              <h4>{{meeting_minutes.date}}</h4>
+              <h4>{{meeting_minutes.agenda}}</h4>
+            </table>
+          </div>
+        <div>
+          <!--Hamburger menu-->
+          <div class="hamburger">
+            <a href="javascript:void(0);" class="icon" onclick="toggleMenu(this)">
+                <i class="fa fa-bars"></i>
+              </a>
+              <div class="menu-links">
+                <a href="{% url 'core:minutes_detail' meeting_minutes.pk %}" class="details-button">Details</a>
+                <a href="{% url 'core:edit_minutes' meeting_minutes.pk %}" class="edit-button">Edit</a>
+                <button type="button" class="modal-button" data-url="{% url 'core:delete_minutes' meeting_minutes.pk %}">Delete</button>
+              </div>
+          </div>
+            <div class="btns">
+            <!-- Detail and Edit Button -->
+            <a href="{% url 'core:minutes_detail' meeting_minutes.pk %}" class="details-button">Details</a>
+            <a href="{% url 'core:edit_minutes' meeting_minutes.pk %}" class="edit-button">Edit</a>
+
+            <!--<button type="submit" class="modal-button" id="myBtn">Delete</button>-->
+            <button type="button" class="modal-button" data-url="{% url 'core:delete_minutes' meeting_minutes.pk %}">Delete</button>
+            </div>
+        </div>
+      </div>
+</section>
+
+  <!-- Modal content -->
+  <div id="myModal" class="modal">
+
+    <div class="modal-content">
+      <h4 style="padding-bottom: 20px; display: flex; justify-content: center; color: #3F2B96;">Are you sure you want to delete?</h4>
+      <div style="display: flex; justify-content: center;">        
+                  <form method="POST" action="{% url 'core:delete_minutes' meeting_minutes.pk %}" style="display:inline;">
+                      {% csrf_token %}
+                      <!-- Delete Button -->
+                      <button type="submit" class="delete-button" style="margin-right: 10px;">Yes</button>
+                  </form>
+        <span class="close"><button type="submit" class="close-button">No</button></span>
+      </div>
+    </div>
+  </div>
+
+  {% endfor %}
+
+<script>
+  const modal = document.getElementById("myModal");
+  const deleteForm = document.querySelector("#myModal form");
+  const deleteButtons = document.querySelectorAll(".modal-button");
+  const closeBtn = document.querySelector(".close-button");
+
+  deleteButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const url = button.getAttribute("data-url");
+      deleteForm.setAttribute("action", url);
+      modal.style.display = "block";
+    });
+  });
+
+  closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+
+  window.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+
+function toggleMenu(element) {
+  // Find the parent .hamburger and then its .menu-links
+  var menu = element.closest('.hamburger').querySelector('.menu-links');
+  if (menu.style.display === "block") {
+    menu.style.display = "none";
+  } else {
+    menu.style.display = "block";
+  }
+}
+</script>
+
+<!--
   {% for meeting_minutes in all_meeting_minutes %}
   <div class="box">
       <div>
@@ -168,10 +365,9 @@ function myFunction() {
           <h4>{{ meeting_minutes.date }}</h4>
       </div>
       <div style="display: flex; gap: 10px;">
-          <!-- Edit Button -->
+
           <a href="{% url 'core:edit_minutes' meeting_minutes.pk %}" style="background: #1976D2; color: white; padding: 6px 12px; border-radius: 4px; text-decoration: none;">Edit</a>
           
-          <!-- Delete Button -->
           <form method="POST" action="{% url 'core:delete_minutes' meeting_minutes.pk %}" style="display:inline;">
           <a href="{% url 'core:minutes_detail' meeting_minutes.pk %}" class="details-button">Details</a>
   
@@ -181,6 +377,7 @@ function myFunction() {
       </div>
   </div>
 {% endfor %}
+-->
 
 </body>
 </html>
