@@ -5,124 +5,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit Meeting</title>
 
-  <style>
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
       }
 
-    body{
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    padding: 20px;
-    background: linear-gradient(90deg, #3F2B96 0%, #A8C0FF 100%);
-  }
-  .sec1{
-    display: flex;
-    justify-content: end;
-    margin-right: 100px;
-    margin-bottom: -10px;
-  }
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        padding: 20px;
+        background: linear-gradient(90deg, #3f2b96 0%, #a8c0ff 100%);
+      }
+      .sec1 {
+        display: flex;
+        justify-content: end;
+        margin-right: 100px;
+        margin-bottom: -10px;
+      }
 
-  .sec0{
-    display: flex;
-    margin: 0px 0px 0px 100px;
-  }
-  
-  .sec0 h1{
-    font-size: 30px;
-    padding-bottom: 10px;
-    color: white;
-  }
+      .sec0 {
+        display: flex;
+        margin: 0px 0px 0px 100px;
+      }
 
-  .back-button{
-            text-decoration: none;
-            padding: 7px 20px;
-            background-color: white;
-            color: #3F2B96;
-            border-radius: 5px;
-            transition: all 0.3s ease-in-out;
-            border: none;
-            border: 1px solid #3F2B96;
-        }
+      .sec0 h1 {
+        font-size: 30px;
+        padding-bottom: 10px;
+        color: white;
+      }
 
-  .back-button:hover{
-            background-color: #3F2B96;
-            color: white;
-        }
-    .error {
-            color: red;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
+      .back-button {
+        text-decoration: none;
+        padding: 7px 20px;
+        background-color: white;
+        color: #3f2b96;
+        border-radius: 5px;
+        transition: all 0.3s ease-in-out;
+        border: none;
+        border: 1px solid #3f2b96;
+      }
 
-    .box {
-      padding: 10px 20px;
-      border-radius: 10px;
-      margin: 5px 100px 10px 100px;
-      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-      display: flex;
-      justify-content: space-between;
-      background-color: white;
-    }
-  
-    .box h2{
-      font-size: 15px;
-      color: #3F2B96;
-    }
-    .box .part{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    
-    .input_style {
-      text-decoration: none;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      padding: 5px;
-      margin-left: 5px;
-      
-    }
+      .back-button:hover {
+        background-color: #3f2b96;
+        color: white;
+      }
+      .error {
+        color: red;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
 
-    .desc {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    resize: vertical;
-    margin-bottom: 10px;
-    min-height: 100px;
-    
-  }
-    .update_btn {
-      text-decoration: none;
-      background: #3F2B96;
-      border: 1px solid #3F2B96;
-      color: white;
-      border-radius: 5px;
-      padding: 5px 30px;
-      transition: all 0.3s ease-in-out;
-      cursor: pointer;
-    }
-    .update_btn:hover {
-      color: #3F2B96;
-      background-color: white;
-    }
+      .box {
+        padding: 10px 20px;
+        border-radius: 10px;
+        margin: 5px 100px 10px 100px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        display: flex;
+        justify-content: space-between;
+        background-color: white;
+      }
 
-  </style>
+      .box h2 {
+        font-size: 15px;
+        color: #3f2b96;
+      }
+      .box .part {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .input_style {
+        text-decoration: none;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 5px;
+        margin-left: 5px;
+      }
+
+      .desc {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        resize: vertical;
+        margin-bottom: 10px;
+        min-height: 100px;
+      }
+      .update_btn {
+        text-decoration: none;
+        background: #3f2b96;
+        border: 1px solid #3f2b96;
+        color: white;
+        border-radius: 5px;
+        padding: 5px 30px;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+      }
+      .update_btn:hover {
+        color: #3f2b96;
+        background-color: white;
+      }
+    </style>
   </head>
   <body>
-    <section class="sec1"><!--back_button-->
+    <section class="sec1">
+      <!--back_button-->
       <a class="back-button" href="{% url 'core:homepage'%}">Back</a>
     </section>
 
     <section class="sec0">
-    <h1>Edit Minutes</h1>
+      <h1>Edit Minutes</h1>
     </section>
 
     <form method="POST">
@@ -131,51 +128,189 @@
       <div class="box">
         <div class="part">
           <h2>Enter meeting date:</h2>
-          <input class="input_style" type="date" name="date" value="{{ meeting.date|date:'Y-m-d' }}"/>
+          <input
+            class="input_style"
+            type="date"
+            name="date"
+            value="{{ meeting.date|date:'Y-m-d' }}"
+          />
         </div>
         <div class="part">
           <h2>Enter meeting venue:</h2>
-          <input class="input_style" type="text" name="location" value="{{ meeting.location }}" placeholder="Venue"/>
+          <input
+            class="input_style"
+            type="text"
+            name="location"
+            value="{{ meeting.location }}"
+            placeholder="Venue"
+          />
         </div>
       </div>
 
       <div class="box" style="display: flex; flex-direction: column; gap: 5px">
-        
-        <h2 style="padding-top: 10px;">Meeting agenda:</h2> <!--Agenda-->
-        <input class="input_style" style="margin-bottom: 10px;" type="text" name="agenda" value="{{ meeting.agenda }}" placeholder="Agenda"/>
+        <h2 style="padding-top: 10px">Meeting agenda:</h2>
+        <!--Agenda-->
+        <input
+          class="input_style"
+          style="margin-bottom: 10px"
+          type="text"
+          name="agenda"
+          value="{{ meeting.agenda }}"
+          placeholder="Agenda"
+        />
 
-        <label for="start_time"> <h2>Start Time:</h2> </label> <!--Start_time-->
-        <input class="input_style" type="time" name="start_time" value="{{ meeting.start_time|time:'H:i' }}" style="margin-bottom: 10px;" required />
+        <label for="start_time"> <h2>Start Time:</h2> </label>
+        <!--Start_time-->
+        <input
+          class="input_style"
+          type="time"
+          name="start_time"
+          value="{{ meeting.start_time|time:'H:i' }}"
+          style="margin-bottom: 10px"
+          required
+        />
 
-        <label for="end_time"> <h2>End Time:</h2> </label> <!--End_time-->
-        <input class="input_style" type="time" name="end_time" value="{{ meeting.end_time|time:'H:i' }}" style="margin-bottom: 10px;" required />
+        <label for="end_time"> <h2>End Time:</h2> </label>
+        <!--End_time-->
+        <input
+          class="input_style"
+          type="time"
+          name="end_time"
+          value="{{ meeting.end_time|time:'H:i' }}"
+          style="margin-bottom: 10px"
+          required
+        />
 
         <label> <h2>Host:</h2> </label>
-        <input class="input_style" type="text" name="hosts" value="{{ meeting.hosts }}" placeholder="Host" style="margin-bottom: 10px;"/> <!--Host-->
+        <input
+          class="input_style"
+          type="text"
+          name="hosts"
+          value="{{ meeting.hosts }}"
+          placeholder="Host"
+          style="margin-bottom: 10px"
+        />
+        <!--Host-->
 
         <label> <h2>Co-Hosts:</h2> </label>
-        <input class="input_style" type="text" name="co_hosts" value="{{ meeting.co_hosts }}" placeholder="Co-hosts" style="margin-bottom: 10px;"/> <!--Co-host-->
-        
+        <input
+          class="input_style"
+          type="text"
+          name="co_hosts"
+          value="{{ meeting.co_hosts }}"
+          placeholder="Co-hosts"
+          style="margin-bottom: 10px"
+        />
+        <!--Co-host-->
+
         <label> <h2>Guests:</h2> </label>
-        <textarea name="guests" class="input_style" rows="2" placeholder="Guests" style="margin-bottom: 10px; min-height: 30px; resize: vertical;">{{ meeting.guests }}</textarea> <!--Guest-->
+        <textarea
+          name="guests"
+          class="input_style"
+          rows="2"
+          placeholder="Guests"
+          style="margin-bottom: 10px; min-height: 30px; resize: vertical"
+        >
+{{ meeting.guests }}</textarea
+        >
+        <!--Guest-->
 
         <label> <h2>Written by:</h2> </label>
-        <input class="input_style" type="text" name="written_by" value="{{ meeting.written_by }}" placeholder="Writer" style="margin-bottom: 10px;"/> <!--Writer-->
+        <input
+          class="input_style"
+          type="text"
+          name="written_by"
+          value="{{ meeting.written_by }}"
+          placeholder="Writer"
+          style="margin-bottom: 10px"
+        />
+        <!--Writer-->
 
         <label> <h2>Total Attendees:</h2> </label>
-        <input class="input_style" type="number" name="total_attendees" value="{{ meeting.total_attendees }}" min="0" placeholder="Number of Attendees" style="margin-bottom: 10px;"/> <!--Attendees-->
+        <input
+          class="input_style"
+          type="number"
+          name="total_attendees"
+          value="{{ meeting.total_attendees }}"
+          min="0"
+          placeholder="Number of Attendees"
+          style="margin-bottom: 10px"
+        />
+        <!--Attendees-->
 
         <label> <h2>Category/Team:</h2> </label>
-        <input class="input_style" type="text" name="category" value="{{ meeting.category }}" placeholder="Team or Department name" style="margin-bottom: 10px;"/> <!--Team-->
+        <input
+          class="input_style"
+          type="text"
+          name="category"
+          value="{{ meeting.category }}"
+          placeholder="Team or Department name"
+          style="margin-bottom: 10px"
+        />
+        <!--Team-->
 
         <h2>Discussion</h2>
-        <textarea name="discussion" id="" class="desc" placeholder="Write your minutes here..." >{{ meeting.discussion }}</textarea> <!--Discussion-->
+        <textarea
+          name="discussion"
+          id=""
+          class="desc"
+          placeholder="Write your minutes here..."
+        >
+{{ meeting.discussion }}</textarea
+        >
+        <!--Discussion-->
+
+        <!-- Add this just before the Save button -->
+        <p id="status" style="color: green; font-weight: bold"></p>
 
         <div>
-          <button type="submit" name="minutes_form" class="update_btn">Save</button> <!--Update_button-->
+          <button type="submit" name="minutes_form" class="update_btn">
+            Save
+          </button>
+          <!--Update_button-->
         </div>
-
       </div>
     </form>
+
+    <script>
+      function autoSave() {
+        const formData = new FormData(document.querySelector("form"));
+        const data = {};
+
+       for (let [key, value] of formData.entries()) {
+    // Convert total_attendees to integer if it's not empty
+    if (key === 'total_attendees') {
+        data[key] = value ? parseInt(value) : null;
+    } else {
+        data[key] = value;
+    }
+}
+
+
+        const meetingId = "{{ meeting.pk }}";
+        fetch(`/api/meeting-minutes/${meetingId}/autosave/`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": "{{ csrf_token }}",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            const status = document.getElementById("status");
+            status.innerText = "Auto-saved!";
+            setTimeout(() => {
+              status.innerText = "";
+            }, 3000); // Clear after 3 seconds
+          })
+          .catch((error) => {
+            console.error("Auto-save failed:", error);
+          });
+      }
+
+      // Auto-save every 10 seconds
+      setInterval(autoSave, 10000);
+    </script>
   </body>
 </html>
