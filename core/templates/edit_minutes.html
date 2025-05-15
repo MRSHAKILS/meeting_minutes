@@ -207,11 +207,55 @@
         <h2>Discussion</h2>
         <textarea name="discussion" id="" class="desc" placeholder="Write your minutes here..." >{{ meeting.discussion }}</textarea> <!--Discussion-->
 
+        <!-- Add this just before the Save button -->
+        <p id="status" style="color: #3F2B96; font-weight: bold"></p>
+
         <div>
           <button type="submit" name="minutes_form" class="update_btn">Save</button> <!--Update_button-->
         </div>
 
       </div>
     </form>
+
+    <script>
+        function autoSave() {
+          const formData = new FormData(document.querySelector("form"));
+          const data = {};
+
+        for (let [key, value] of formData.entries()) {
+      // Convert total_attendees to integer if it's not empty
+      if (key === 'total_attendees') {
+          data[key] = value ? parseInt(value) : null;
+      } else {
+          data[key] = value;
+      }
+    }
+
+
+          const meetingId = "{{ meeting.pk }}";
+          fetch(`/api/meeting-minutes/${meetingId}/autosave/`, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+              "X-CSRFToken": "{{ csrf_token }}",
+            },
+            body: JSON.stringify(data),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              const status = document.getElementById("status");
+              status.innerText = "Auto-saved!";
+              setTimeout(() => {
+                status.innerText = "";
+              }, 3000); // Clear after 3 seconds
+            })
+            .catch((error) => {
+              console.error("Auto-save failed:", error);
+            });
+        }
+
+        // Auto-save every 10 seconds
+        setInterval(autoSave, 10000);
+    </script>
   </body>
 </html>
