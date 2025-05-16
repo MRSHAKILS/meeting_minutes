@@ -5,6 +5,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Meeting Details</title>
+
+  <script src="https://kit.fontawesome.com/8254fe1519.js" crossorigin="anonymous"></script>
+
   <style>
     * {
       margin: 0;
@@ -52,19 +55,26 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    h2 {
+
+
+    h2{
       text-align: center;
-      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid gray;
+      color: #3F2B96;
+      margin-bottom: 30px;
     }
 
     .detail-row {
-      margin: 12px 0;
+      margin: 12px 0px;
+      color: rgb(100, 100, 100);
     }
 
     .label {
       font-weight: bold;
       display: inline-block;
       min-width: 160px;
+      color: #3F2B96;
     }
 
     .back-link {
@@ -77,20 +87,19 @@
     .back-link:hover {
       text-decoration: underline;
     }
+
   </style>
 </head>
 <body>
   <div class="container">
-    <a href="{% url 'core:homepage' %}" class="back-link"> Back to homepage</a>
+    <a href="{% url 'core:homepage' %}" class="back-link"> <i class="fa-solid fa-arrow-left"></i>  Back to homepage</a>
 
-    <h2>Meeting Details</h2>
+    <h2>Meeting Minutes</h2>
 
     <div class="detail-row"><span class="label">Date:</span> {{ meeting.date }}</div>
-    <div class="detail-row"><span class="label">Start Time:</span> {{ meeting.start_time }}</div>
-    <div class="detail-row"><span class="label">End Time:</span> {{ meeting.end_time }}</div>
-    <div class="detail-row"><span class="label">Location:</span> {{ meeting.location }}</div>
+    <div class="detail-row"><span class="label">Time:</span> {{ meeting.start_time }} - {{ meeting.end_time }}</div>
+    <div class="detail-row"><span class="label">Venue:</span> {{ meeting.location }}</div>
     <div class="detail-row"><span class="label">Agenda:</span> {{ meeting.agenda }}</div>
-    <div class="detail-row"><span class="label">Discussion:</span> {{ meeting.discussion }}</div>
 
     {% if meeting.hosts %}
       <div class="detail-row"><span class="label">Host:</span> {{ meeting.hosts }}</div>
@@ -110,6 +119,10 @@
     {% if meeting.category %}
       <div class="detail-row"><span class="label">Category:</span> {{ meeting.category }}</div>
     {% endif %}
+    
+    <div class="detail-row"><span class="label" style="margin-bottom: 10px;">Discussion:</span> <br> {{ meeting.discussion|linebreaksbr }}</div>
+
   </div>
+
 </body>
 </html>
