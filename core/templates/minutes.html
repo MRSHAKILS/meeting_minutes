@@ -1,0 +1,256 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meeting Minutes</title>
+  </head>
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+      }
+
+    body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px;
+    background: linear-gradient(90deg, #3F2B96 0%, #A8C0FF 100%);
+  }
+  .sec1{
+    display: flex;
+    justify-content: end;
+    margin-right: 100px;
+    margin-bottom: -10px;
+  }
+
+  .sec0{
+    display: flex;
+    margin: 0px 0px 0px 100px;
+  }
+  
+  .sec0 h1{
+    font-size: 30px;
+    padding-bottom: 10px;
+    color: white;
+  }
+
+  .back-button{
+            text-decoration: none;
+            padding: 7px 20px;
+            background-color: white;
+            color: #3F2B96;
+            border-radius: 5px;
+            transition: all 0.3s ease-in-out;
+            border: none;
+            border: 1px solid #3F2B96;
+        }
+
+  .back-button:hover{
+            background-color: #3F2B96;
+            color: white;
+        }
+    .error {
+            color: red;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+    .box {
+      padding: 10px 20px;
+      border-radius: 10px;
+      margin: 5px 100px 10px 100px;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      display: flex;
+      justify-content: space-between;
+      background-color: white;
+    }
+  
+    .box h2{
+      font-size: 15px;
+      color: #3F2B96;
+    }
+    .box .part{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .input_style {
+      text-decoration: none;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 5px;
+      margin-left: 5px;
+    }
+
+    .desc {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+    margin-bottom: 10px;
+    min-height: 100px;
+    
+  }
+    .submit_btn {
+      text-decoration: none;
+      background: #3F2B96;
+      border: 1px solid #3F2B96;
+      color: white;
+      border-radius: 5px;
+      padding: 5px 30px;
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+    }
+    .submit_btn:hover {
+      color: #3F2B96;
+      background-color: white;
+    }
+
+  </style>
+
+  <body>
+    <section class="sec1"><!--back_button-->
+      <a class="back-button"  href="{% url 'core:homepage'%}">Back</a>
+    </section>
+
+    <section class="sec0">
+    <h1>Meeting Minutes</h1>
+    </section>
+
+    <form method="POST">
+      {% csrf_token %}
+
+      <div class="box">
+        <div class="part">
+          <h2>Enter meeting date:</h2>
+          <input class="input_style" type="date" name="date" id="" />
+        </div>
+        <div class="part">
+          <h2>Enter meeting venue:</h2>
+          <input class="input_style" type="text" name="location" id="" placeholder="Venue"/>
+        </div>
+      </div>
+
+      <div class="box" style="display: flex; flex-direction: column; gap: 5px">
+        
+        <h2 style="padding-top: 10px;">Meeting agenda:</h2> <!--Agenda-->
+        <input class="input_style" style="margin-bottom: 10px;" type="text" name="agenda" id="" placeholder="Agenda"/>
+
+        <label for="start_time"> <h2>Start Time:</h2> </label> <!--Start_time-->
+        <input class="input_style" type="time" name="start_time" style="margin-bottom: 10px;" required />
+
+        <label for="end_time"> <h2>End Time:</h2> </label> <!--End_time-->
+        <input class="input_style" type="time" name="end_time" style="margin-bottom: 10px;" required />
+
+        <label> <h2>Host:</h2> </label>
+        <input class="input_style" type="text" name="hosts" placeholder="Host" style="margin-bottom: 10px;"/> <!--Host-->
+
+        <label> <h2>Co-Hosts:</h2> </label>
+        <input class="input_style" type="text" name="co_hosts" placeholder="Co-hosts" style="margin-bottom: 10px;"/> <!--Co-host-->
+        
+        <label> <h2>Guests:</h2> </label>
+        <textarea name="guests" class="input_style" rows="2" placeholder="Guests" style="margin-bottom: 10px; min-height: 30px; resize: vertical;"></textarea> <!--Guest-->
+
+        <label> <h2>Written by:</h2> </label>
+        <input class="input_style" type="text" name="written_by" placeholder="Writer" style="margin-bottom: 10px;"/> <!--Writer-->
+
+        <label> <h2>Total Attendees:</h2> </label>
+        <input class="input_style" type="number" name="total_attendees" min="0" placeholder="Number of Attendees" style="margin-bottom: 10px;"/> <!--Attendees-->
+
+        <label> <h2>Category/Team:</h2> </label>
+        <input class="input_style" type="text" name="category" placeholder="Team or Department name" style="margin-bottom: 10px;"/> <!--Team-->
+
+        <h2>Discussion</h2>
+        <textarea name="discussion" id="" class="desc" placeholder="Write your minutes here..." ></textarea> <!--Discussion-->
+
+        <div>
+          <button type="submit" name="minutes_form" class="submit_btn">Save</button> <!--Save_button-->
+        </div>
+
+      </div>
+    </form>
+
+    <!--label{
+      font-weight: bold;
+      margin-top: 10px;
+  }
+  </style>-->
+
+<!--  <body style="margin-top: 46px">
+    <a
+      href="{% url 'core:homepage'%}"
+      style="text-decoration: none; color: black"
+      >Back</a
+    >
+    <h2 style="text-align: center">Meeting Minutes</h2>
+    <hr />
+
+    {% if messages %}
+    <ul>
+      {% for message in messages %}
+      <li
+        style="color: {% if message.tags == 'error' %}red{% else %}green{% endif %};"
+      >
+        {{ message }}
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+    <form method="POST">
+    {% csrf_token %}
+    <div class="box">
+      <label>Date:</label>
+      <input class="input_style" type="date" name="date" required />
+
+      <label>Start Time:</label>
+      <input class="input_style" type="time" name="start_time" required />
+
+      <label>End Time:</label>
+      <input class="input_style" type="time" name="end_time" required />
+
+      <label>Location:</label>
+      <input class="input_style" type="text" name="location" placeholder="Location" required />
+    </div>
+
+    <div class="box">
+      <label>Agenda:</label>
+      <input class="input_style" type="text" name="agenda" placeholder="Agenda" required />
+
+      <label>Discussion:</label>
+      <textarea name="discussion" class="input_style" rows="4" placeholder="Topic discussed..."></textarea>
+
+      <label>Host:</label>
+      <input class="input_style" type="text" name="hosts" placeholder="Main Host" />
+
+      <label>Co-Hosts:</label>
+      <input class="input_style" type="text" name="co_hosts" placeholder="Comma-separated co-hosts" />
+
+      <label>Guests:</label>
+      <textarea name="guests" class="input_style" rows="2" placeholder="Comma-separated guest names"></textarea>
+
+      <label>Written by:</label>
+      <input class="input_style" type="text" name="written_by" placeholder="Name of the person who wrote the minutes" />
+
+      <label>Total Attendees:</label>
+      <input class="input_style" type="number" name="total_attendees" min="0" placeholder="Total Attendees" />
+
+      <label>Category / Team:</label>
+      <input class="input_style" type="text" name="category" placeholder="Team or Department name" />
+
+      <br />
+      <button type="submit" class="submit_btn">SAVE</button>
+    </div>
+  </form>
+  </body>
+-->
+
+</html>
