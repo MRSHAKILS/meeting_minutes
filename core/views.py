@@ -5,6 +5,11 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth.models import User,auth
 from core.models import MeetingMinutes
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
+from .models import MeetingMinutes
+from .serializers import MeetingMinutesSerializer
 
 @login_required
 def homepage(request):
@@ -135,3 +140,20 @@ def minutes_detail(request, pk):
     meeting = get_object_or_404(MeetingMinutes, pk=pk)
     return render(request, 'minutes_detail.html', {'meeting': meeting})
 
+
+@api_view(['PATCH'])
+def autosave_meeting_minutes(request, pk):
+    try:
+        meeting = MeetingMinutes.objects.get(pk=pk)
+    except MeetingMinutes.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    serializer = MeetingMinutesSerializer(meeting, data=request.data, partial=True)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data)
+
+    # Add this line to show exactly why it's failing
+    print(serializer.errors)
+
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
