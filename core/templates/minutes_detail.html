@@ -1,128 +1,158 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Meeting Details</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meeting Details</title>
 
-  <script src="https://kit.fontawesome.com/8254fe1519.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/8254fe1519.js"
+      crossorigin="anonymous"
+    ></script>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
 
-    body{
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      padding: 20px;
-      background: linear-gradient(90deg, #3F2B96 0%, #A8C0FF 100%);
-    }
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        padding: 20px;
+        background: linear-gradient(90deg, #3f2b96 0%, #a8c0ff 100%);
+      }
 
-  .edit-button, .details-button{
-    background-color: #3F2B96;
-            color: white;
-            padding: 7px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 15px;
-            transition: 0.5s;
-            border: none;
-            border: 1px solid #3F2B96;  
-            margin-top: 5px;        
-  }
- .edit-button:hover, .details-button:hover{
-            background-color: white;
-            color: #3F2B96;
-  }
-    body {
-      font-family: sans-serif;
-      max-width: 900px;
-      margin: 40px auto;
-      background-color: #f8f9fa;
-      color: #1d1d1d;
-    }
+      .edit-button,
+      .details-button {
+        background-color: #3f2b96;
+        color: white;
+        padding: 7px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 15px;
+        transition: 0.5s;
+        border: none;
+        border: 1px solid #3f2b96;
+        margin-top: 5px;
+      }
+      .edit-button:hover,
+      .details-button:hover {
+        background-color: white;
+        color: #3f2b96;
+      }
+      body {
+        font-family: sans-serif;
+        max-width: 900px;
+        margin: 40px auto;
+        background-color: #f8f9fa;
+        color: #1d1d1d;
+      }
 
-    .container {
-      background-color: #ffffff;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
+      .container {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
 
+      h2 {
+        text-align: center;
+        padding-bottom: 10px;
+        border-bottom: 2px solid gray;
+        color: #3f2b96;
+        margin-bottom: 30px;
+      }
 
+      .detail-row {
+        margin: 12px 0px;
+        color: rgb(100, 100, 100);
+      }
 
-    h2{
-      text-align: center;
-      padding-bottom: 10px;
-      border-bottom: 2px solid gray;
-      color: #3F2B96;
-      margin-bottom: 30px;
-    }
+      .label {
+        font-weight: bold;
+        display: inline-block;
+        min-width: 160px;
+        color: #3f2b96;
+      }
 
-    .detail-row {
-      margin: 12px 0px;
-      color: rgb(100, 100, 100);
-    }
+      .back-link {
+        display: inline-block;
+        margin-bottom: 20px;
+        text-decoration: none;
+        color: #3f2b96;
+      }
 
-    .label {
-      font-weight: bold;
-      display: inline-block;
-      min-width: 160px;
-      color: #3F2B96;
-    }
+      .back-link:hover {
+        text-decoration: underline;
+      }
 
-    .back-link {
-      display: inline-block;
-      margin-bottom: 20px;
-      text-decoration: none;
-      color: #3F2B96;
-    }
+      .download-button {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <a href="{% url 'core:homepage' %}" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i> Back to homepage</a
+      >
 
-    .back-link:hover {
-      text-decoration: underline;
-    }
+      <h2>Meeting Minutes</h2>
 
-  </style>
-</head>
-<body>
-  <div class="container">
-    <a href="{% url 'core:homepage' %}" class="back-link"> <i class="fa-solid fa-arrow-left"></i>  Back to homepage</a>
+      <div class="detail-row">
+        <span class="label">Date:</span> {{ meeting.date }}
+      </div>
+      <div class="detail-row">
+        <span class="label">Time:</span> {{ meeting.start_time }} - {{
+        meeting.end_time }}
+      </div>
+      <div class="detail-row">
+        <span class="label">Venue:</span> {{ meeting.location }}
+      </div>
+      <div class="detail-row">
+        <span class="label">Agenda:</span> {{ meeting.agenda }}
+      </div>
 
-    <h2>Meeting Minutes</h2>
+      {% if meeting.hosts %}
+      <div class="detail-row">
+        <span class="label">Host:</span> {{ meeting.hosts }}
+      </div>
+      {% endif %} {% if meeting.co_hosts %}
+      <div class="detail-row">
+        <span class="label">Co-Hosts:</span> {{ meeting.co_hosts }}
+      </div>
+      {% endif %} {% if meeting.guests %}
+      <div class="detail-row">
+        <span class="label">Guests:</span> {{ meeting.guests }}
+      </div>
+      {% endif %} {% if meeting.written_by %}
+      <div class="detail-row">
+        <span class="label">Written By:</span> {{ meeting.written_by }}
+      </div>
+      {% endif %} {% if meeting.total_attendees %}
+      <div class="detail-row">
+        <span class="label">Total Attendees:</span> {{ meeting.total_attendees
+        }}
+      </div>
+      {% endif %} {% if meeting.category %}
+      <div class="detail-row">
+        <span class="label">Category:</span> {{ meeting.category }}
+      </div>
+      {% endif %}
 
-    <div class="detail-row"><span class="label">Date:</span> {{ meeting.date }}</div>
-    <div class="detail-row"><span class="label">Time:</span> {{ meeting.start_time }} - {{ meeting.end_time }}</div>
-    <div class="detail-row"><span class="label">Venue:</span> {{ meeting.location }}</div>
-    <div class="detail-row"><span class="label">Agenda:</span> {{ meeting.agenda }}</div>
+      <div class="detail-row">
+        <span class="label" style="margin-bottom: 10px">Discussion:</span>
+        <br />
+        {{ meeting.discussion|linebreaksbr }}
+      </div>
 
-    {% if meeting.hosts %}
-      <div class="detail-row"><span class="label">Host:</span> {{ meeting.hosts }}</div>
-    {% endif %}
-    {% if meeting.co_hosts %}
-      <div class="detail-row"><span class="label">Co-Hosts:</span> {{ meeting.co_hosts }}</div>
-    {% endif %}
-    {% if meeting.guests %}
-      <div class="detail-row"><span class="label">Guests:</span> {{ meeting.guests }}</div>
-    {% endif %}
-    {% if meeting.written_by %}
-      <div class="detail-row"><span class="label">Written By:</span> {{ meeting.written_by }}</div>
-    {% endif %}
-    {% if meeting.total_attendees %}
-      <div class="detail-row"><span class="label">Total Attendees:</span> {{ meeting.total_attendees }}</div>
-    {% endif %}
-    {% if meeting.category %}
-      <div class="detail-row"><span class="label">Category:</span> {{ meeting.category }}</div>
-    {% endif %}
-    
-    <div class="detail-row"><span class="label" style="margin-bottom: 10px;">Discussion:</span> <br> {{ meeting.discussion|linebreaksbr }}</div>
+      <a href="{% url 'core:download_meeting_pdf' meeting.pk %}" class="download-button">Download PDF</a>
 
-  </div>
-
-</body>
+    </div>
+  </body>
 </html>
