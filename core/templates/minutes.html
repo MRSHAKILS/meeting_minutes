@@ -178,79 +178,79 @@
       </div>
     </form>
 
-    <!--label{
-      font-weight: bold;
-      margin-top: 10px;
-  }
-  </style>-->
+      <!--label{
+        font-weight: bold;
+        margin-top: 10px;
+    }
+    </style>-->
 
-<!--  <body style="margin-top: 46px">
-    <a
-      href="{% url 'core:homepage'%}"
-      style="text-decoration: none; color: black"
-      >Back</a
-    >
-    <h2 style="text-align: center">Meeting Minutes</h2>
-    <hr />
-
-    {% if messages %}
-    <ul>
-      {% for message in messages %}
-      <li
-        style="color: {% if message.tags == 'error' %}red{% else %}green{% endif %};"
+  <!--  <body style="margin-top: 46px">
+      <a
+        href="{% url 'core:homepage'%}"
+        style="text-decoration: none; color: black"
+        >Back</a
       >
-        {{ message }}
-      </li>
-      {% endfor %}
-    </ul>
-    {% endif %}
+      <h2 style="text-align: center">Meeting Minutes</h2>
+      <hr />
 
-    <form method="POST">
-    {% csrf_token %}
-    <div class="box">
-      <label>Date:</label>
-      <input class="input_style" type="date" name="date" required />
+      {% if messages %}
+      <ul>
+        {% for message in messages %}
+        <li
+          style="color: {% if message.tags == 'error' %}red{% else %}green{% endif %};"
+        >
+          {{ message }}
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
 
-      <label>Start Time:</label>
-      <input class="input_style" type="time" name="start_time" required />
+      <form method="POST">
+      {% csrf_token %}
+      <div class="box">
+        <label>Date:</label>
+        <input class="input_style" type="date" name="date" required />
 
-      <label>End Time:</label>
-      <input class="input_style" type="time" name="end_time" required />
+        <label>Start Time:</label>
+        <input class="input_style" type="time" name="start_time" required />
 
-      <label>Location:</label>
-      <input class="input_style" type="text" name="location" placeholder="Location" required />
-    </div>
+        <label>End Time:</label>
+        <input class="input_style" type="time" name="end_time" required />
 
-    <div class="box">
-      <label>Agenda:</label>
-      <input class="input_style" type="text" name="agenda" placeholder="Agenda" required />
+        <label>Location:</label>
+        <input class="input_style" type="text" name="location" placeholder="Location" required />
+      </div>
 
-      <label>Discussion:</label>
-      <textarea name="discussion" class="input_style" rows="4" placeholder="Topic discussed..."></textarea>
+      <div class="box">
+        <label>Agenda:</label>
+        <input class="input_style" type="text" name="agenda" placeholder="Agenda" required />
 
-      <label>Host:</label>
-      <input class="input_style" type="text" name="hosts" placeholder="Main Host" />
+        <label>Discussion:</label>
+        <textarea name="discussion" class="input_style" rows="4" placeholder="Topic discussed..."></textarea>
 
-      <label>Co-Hosts:</label>
-      <input class="input_style" type="text" name="co_hosts" placeholder="Comma-separated co-hosts" />
+        <label>Host:</label>
+        <input class="input_style" type="text" name="hosts" placeholder="Main Host" />
 
-      <label>Guests:</label>
-      <textarea name="guests" class="input_style" rows="2" placeholder="Comma-separated guest names"></textarea>
+        <label>Co-Hosts:</label>
+        <input class="input_style" type="text" name="co_hosts" placeholder="Comma-separated co-hosts" />
 
-      <label>Written by:</label>
-      <input class="input_style" type="text" name="written_by" placeholder="Name of the person who wrote the minutes" />
+        <label>Guests:</label>
+        <textarea name="guests" class="input_style" rows="2" placeholder="Comma-separated guest names"></textarea>
 
-      <label>Total Attendees:</label>
-      <input class="input_style" type="number" name="total_attendees" min="0" placeholder="Total Attendees" />
+        <label>Written by:</label>
+        <input class="input_style" type="text" name="written_by" placeholder="Name of the person who wrote the minutes" />
 
-      <label>Category / Team:</label>
-      <input class="input_style" type="text" name="category" placeholder="Team or Department name" />
+        <label>Total Attendees:</label>
+        <input class="input_style" type="number" name="total_attendees" min="0" placeholder="Total Attendees" />
 
-      <br />
-      <button type="submit" class="submit_btn">SAVE</button>
-    </div>
-  </form>
-  </body>
--->
+        <label>Category / Team:</label>
+        <input class="input_style" type="text" name="category" placeholder="Team or Department name" />
+
+        <br />
+        <button type="submit" class="submit_btn">SAVE</button>
+      </div>
+    </form>
+    </body>
+  -->
 
 </html>
