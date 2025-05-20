@@ -15,4 +15,6 @@ urlpatterns = [
     path("minutes/<int:pk>/", views.minutes_detail, name="minutes_detail"),
     
     path('api/meeting-minutes/<int:pk>/autosave/', views.autosave_meeting_minutes, name='autosave_meeting_minutes'),
+    
+    path('meeting-minutes/<int:pk>/pdf/', views.download_meeting_pdf, name='download_meeting_pdf'),
 ]
