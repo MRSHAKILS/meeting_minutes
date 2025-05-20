@@ -108,8 +108,7 @@
         <span class="label">Date:</span> {{ meeting.date }}
       </div>
       <div class="detail-row">
-        <span class="label">Time:</span> {{ meeting.start_time }} - {{
-        meeting.end_time }}
+        <span class="label">Time:</span> {{ meeting.start_time }} - {{meeting.end_time }}
       </div>
       <div class="detail-row">
         <span class="label">Venue:</span> {{ meeting.location }}
@@ -136,8 +135,7 @@
       </div>
       {% endif %} {% if meeting.total_attendees %}
       <div class="detail-row">
-        <span class="label">Total Attendees:</span> {{ meeting.total_attendees
-        }}
+        <span class="label">Total Attendees:</span> {{ meeting.total_attendees}}
       </div>
       {% endif %} {% if meeting.category %}
       <div class="detail-row">
@@ -151,8 +149,12 @@
         {{ meeting.discussion|linebreaksbr }}
       </div>
 
-      <a href="{% url 'core:download_meeting_pdf' meeting.pk %}" class="download-button">Download PDF</a>
-
+      <a
+        href="{% url 'core:download_meeting_pdf' meeting.pk %}"
+        class="download-button"
+        >Download PDF</a
+      >
     </div>
+   
   </body>
 </html>
